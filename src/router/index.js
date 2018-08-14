@@ -23,28 +23,27 @@ export default new Router({
                 path: '/home',
                 component: resolve => require(['../views/HomePage.vue'], resolve),
                 meta: {title: '首页概览', permission: 'admin'}
+            }, 
+            {
+                path: '/PowerDistributionMonitoring',
+                component: resolve => require(['../views/equipment_monitoring/PowerDistributionMonitoring.vue'], resolve),
+                meta: {title: '配电监测'}
             },
-               
-                {
-                    path: '/PowerDistributionMonitoring',
-                    component: resolve => require(['../views/equipment_monitoring/PowerDistributionMonitoring.vue'], resolve),
-                    meta: {title: '配电监测'}
-                },
-                {
-                    path: '/MeterMonitoring',
-                    component: resolve => require(['../views/equipment_monitoring/MeterMonitoring.vue'], resolve),
-                    meta: {title: '表计监测'}
-                },
-                {
-                    path: '/EnvironmentalMonitoring',
-                    component: resolve => require(['../views/equipment_monitoring/EnvironmentalMonitoring.vue'], resolve),
-                    meta: {title: '环境监测'}
-                },
-                {
-                    path: '/ServiceMonitoring',
-                    component: resolve => require(['../views/equipment_monitoring/ServiceMonitoring.vue'], resolve),
-                    meta: {title: '服务监测'}
-                },
+            {
+                path: '/MeterMonitoring',
+                component: resolve => require(['../views/equipment_monitoring/MeterMonitoring.vue'], resolve),
+                meta: {title: '表计监测'}
+            },
+            {
+                path: '/EnvironmentalMonitoring',
+                component: resolve => require(['../views/equipment_monitoring/EnvironmentalMonitoring.vue'], resolve),
+                meta: {title: '环境监测'}
+            },
+            {
+                path: '/ServiceMonitoring',
+                component: resolve => require(['../views/equipment_monitoring/ServiceMonitoring.vue'], resolve),
+                meta: {title: '服务监测'}
+            }
                
                 // {
                 //     path: '/DemoList',

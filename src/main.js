@@ -26,23 +26,23 @@ Vue.prototype.$url = url;
 
 // localStorage.setItem('ms_username', 'admin');
 //使用钩子函数对路由进行权限跳转
-router.beforeEach((to, from, next) => {
-    const role = localStorage.getItem('ms_username');
-    store.state.userName = role;
-    store.state.sidebarItem.meta = to.meta;
-    if (!role) {
-        if (to.path !== "/login") {
-            next('login');
-        }
-    }
-    if (to.meta.permission) {
-        // 如果是管理员权限则可进入，这里只是简单的模拟管理员权限而已
-        role === 'admin' ? next() : next('/403');
-    } else {
-        // 验证后台返回登录状态
-        next()
-    }
-})
+// router.beforeEach((to, from, next) => {
+//     const role = localStorage.getItem('ms_username');
+//     store.state.userName = role;
+//     store.state.sidebarItem.meta = to.meta;
+//     if (!role) {
+//         if (to.path !== "/login") {
+//             next('login');
+//         }
+//     }
+//     if (to.meta.permission) {
+//         // 如果是管理员权限则可进入，这里只是简单的模拟管理员权限而已
+//         role === 'admin' ? next() : next('/403');
+//     } else {
+//         // 验证后台返回登录状态
+//         next()
+//     }
+// })
 
 
 
