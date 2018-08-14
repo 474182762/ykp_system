@@ -1,0 +1,38 @@
+{
+    "data":{
+        "endRow":2,
+        "firstPage": 1,
+        "lastPage": 8,
+        "list": [
+            {"id":1,"alarmType":"参数超限","alarmlocal":"3号楼","deviceName":"1号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"一级","status":5,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"},
+            {"id":2,"alarmType":"设备故障","alarmlocal":"5号楼","deviceName":"3号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"二级","status":2,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"},
+            {"id":3,"alarmType":"能耗偏低","alarmlocal":"1号楼","deviceName":"2号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"一级","status":5,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"},
+            {"id":4,"alarmType":"参数超限","alarmlocal":"3号楼","deviceName":"1号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"二级","status":5,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"},
+            {"id":5,"alarmType":"参数超限","alarmlocal":"1号楼","deviceName":"2号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"一级","status":5,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"},
+            {"id":6,"alarmType":"参数超限","alarmlocal":"3号楼","deviceName":"3号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"三级","status":2,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"},
+            {"id":7,"alarmType":"运营管理","alarmlocal":"2号楼","deviceName":"6号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"一级","status":2,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"},
+            {"id":8,"alarmType":"参数超限","alarmlocal":"3号楼","deviceName":"5号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"五级","status":3,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"},
+            {"id":9,"alarmType":"参数超限","alarmlocal":"6号楼","deviceName":"1号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"一级","status":4,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"},
+            {"id":10,"alarmType":"参数超限","alarmlocal":"3号楼","deviceName":"1号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"一级","status":1,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"},
+            {"id":11,"alarmType":"参数超限","alarmlocal":"4号楼","deviceName":"3号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"三级","status":5,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"},
+            {"id":12,"alarmType":"参数超限","alarmlocal":"3号楼","deviceName":"1号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"一级","status":2,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"},
+            {"id":13,"alarmType":"参数超限","alarmlocal":"3号楼","deviceName":"1号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"二级","status":4,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"},
+            {"id":14,"alarmType":"参数超限","alarmlocal":"3号楼","deviceName":"1号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"一级","status":5,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"},
+            {"id":15,"alarmType":"参数超限","alarmlocal":"3号楼","deviceName":"1号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"一级","status":2,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"},
+            {"id":16,"alarmType":"参数超限","alarmlocal":"3号楼","deviceName":"1号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"一级","status":2,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"},
+            {"id":17,"alarmType":"参数超限","alarmlocal":"3号楼","deviceName":"1号冷却塔","alarmTime":"2018-03-07 10:00","alarmLevel":"一级","status":4,"log":"山东发送PDF可适当放宽平时都佛欧松的说法是PDF山东佛山的手动方式PDF拍摄的佛山搭配佛苏东坡佛菩萨的佛寺大盘苏东坡佛菩萨东方市频道"}
+        ],
+        "nextPage": 2,
+        "pageNum": 1,
+        "pageSize": 2,
+        "pages": 9,
+        "prePage": 0,
+        "size": 2,
+        "startRow": 1,
+        "total": 17,
+        "errors": null,
+        "msg": ""
+
+    }
+
+}
