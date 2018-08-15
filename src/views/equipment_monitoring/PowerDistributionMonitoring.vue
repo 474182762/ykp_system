@@ -12,7 +12,29 @@
                 </div>
             </div>
             <div class="power_info_list">
-
+                <div class="left_img">
+                    <img src="../../assets/power1.png" alt="">
+                    <img src="../../assets/power2.png" alt="">
+                    <img src="../../assets/power3.png" alt="">
+                </div>
+                <ul class="right_img">
+                    <li>
+                        <div class="warp">
+                            <img src="../../assets/power4.png" alt="">
+                            <img src="../../assets/power4.png" alt="">
+                            <img src="../../assets/power4.png" alt="">
+                            <img src="../../assets/power4.png" alt="">
+                            <img src="../../assets/power4.png" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="warp">
+                            <img src="../../assets/power4.png" alt="">
+                            <img src="../../assets/power4.png" alt="">
+                            <img src="../../assets/power4.png" alt="">
+                        </div>
+                    </li>
+                </ul>
             </div>
             <div class="power_info_table clearfix">
                 <dl class="left_power_name">
@@ -21,17 +43,17 @@
                 </dl>
                 <el-table :data="tableData" style="width: 100%" header-row-class-name = 'table_header'  stripe row-class-name ='table_row'>
                     <el-table-column prop="powername" label="支路名称"></el-table-column>
-                    <el-table-column prop="name" label=" S1-2TM变" ></el-table-column>
-                    <el-table-column prop="address"label="电容补偿"></el-table-column>
+                    <el-table-column prop="name" label=" S1-2TM变"  width="100"></el-table-column>
+                    <el-table-column prop="address" label="电容补偿"></el-table-column>
                      <el-table-column prop="powername" label="支路名称"></el-table-column>
                     <el-table-column prop="name" label=" S1-2TM变" ></el-table-column>
-                    <el-table-column prop="address"label="电容补偿"></el-table-column>   
+                    <el-table-column prop="address" label="电容补偿"></el-table-column>   
                      <el-table-column prop="powername" label="支路名称"></el-table-column>
-                    <el-table-column prop="name" label=" S1-2TM变压" ></el-table-column>
-                    <el-table-column prop="address"label="电容补偿"></el-table-column>   
+                    <el-table-column prop="name" label=" S1-2TM变" width="80" ></el-table-column>
+                    <el-table-column prop="address" label="电容补偿"></el-table-column>   
                      <el-table-column prop="powername" label="支路名称"></el-table-column>
-                    <el-table-column prop="name" label=" S1-2TM变压" ></el-table-column>
-                    <el-table-column prop="address"label="电容补偿"></el-table-column>                                   
+                    <el-table-column prop="name" label=" S1-2TM变" width="80" ></el-table-column>
+                    <el-table-column prop="address" label="电容补偿"></el-table-column>                                   
                 </el-table>
             </div>
         </div>
@@ -39,6 +61,8 @@
 </template>
 
 <script>
+import ajax  from '../../axios/axios'
+
 export default { 
     name: 'PowerDistributionMonitoring',
     data(){
@@ -56,15 +80,31 @@ export default {
                 {powername: 'BC线电压',name: '王小虎', address: '上海市'},
                 {powername: 'CA线电压',name: '王小虎',address: '上海市'},
                 {powername: 'A相电流', name: '王小虎',address: '上海市'},
-                {powername: 'A相电流', name: '王小虎',address: '上海市'}
+                {powername: <el-button size="mini" round>用能趋势</el-button>, name: <el-button size="mini" round>用能趋势</el-button>,address: <el-button size="mini" round>用能趋势</el-button>}
                 ]
         }
+    },
+    mounted(){
+        let This = this;
+        console.log(ajax)
+        This.getInfo();
+    },
+    methods:{
+        getInfo(){
+            let data={
+
+            }
+            ajax.get('www.baidu.com',data,(res)=>{
+                alert(111)
+            })
+        }
     }
+
+
 }
 </script>
 <style scoped>
     .power_content{
-
     }
     .power_content h2{
         width: 100%;
@@ -101,7 +141,6 @@ export default {
         padding: 20px 24px;
     }
     .power_info_warp .header_info{
-
     }
     .power_info_warp .header_info .left{
         width:134px;
@@ -130,7 +169,6 @@ export default {
         margin-left: 16px;
      }
      /* .header_info .middle ul li:nth-of-type(1){
-
      } */
      .header_info .middle ul li{
          width: 40px;
@@ -173,8 +211,70 @@ export default {
     /*配电箱图例信息*/
     .power_info_list{
         width: 100%;
-        height: 370px;
+        display: box;
+        display: -webkit-box;
+        display: flex;
+        padding:4px 10px 22px 30px;
     }
+    .power_info_list .left_img img:nth-of-type(2){
+        margin-bottom:15px;
+    }
+    .power_info_list .left_img img:nth-of-type(3){
+        margin-bottom:7px;
+    }
+    .power_info_list .right_img{
+        position: relative;
+        margin-left: 20px;
+        display: box;
+        display: -webkit-box;
+        display: flex;
+    }
+    .power_info_list .right_img li{
+        /* width:230px; */
+        /* position: absolute;
+        bottom:7px; */
+        padding:7px;
+        border:1px solid #92BAD1;
+        margin: 108px 3px 0 3px;
+    }
+    .power_info_list .right_img .warp{
+        border-top:3px solid #707070;
+        position: relative;
+        display: box;
+        display: -webkit-box;
+        display: flex;
+    }
+    .power_info_list .right_img .warp:after{
+        content: '';
+        display: block;
+        width:2px;
+        height:38px;
+        background: #707070;
+        position: absolute;
+        left:50%;
+        /* transform: translateX(-50%); */
+        margin-left: -4px;
+        top:-38px;
+        z-index: 22;
+    }
+    .power_info_list .right_img li img{
+        display: block;
+        padding: 0 2px;
+        position: relative;
+    }
+    .power_info_list .right_img li img::before{
+        content: '';
+        display: block;
+        width:28px;
+        height:3px;
+        background: red;
+        position: absolute;
+        left:0;
+        top:0;
+        z-index: 222;
+    }
+
+
     /*支路信息*/
     .power_info_table{
         display: box;
@@ -187,7 +287,7 @@ export default {
         border-radius:3px 3px 0px 0px;
         border:1px solid #DADADA;
         text-align: center;
-        margin:0 13px 0 72px;
+        margin:0 13px 0 46px;
         background:rgba(247,251,252,1);
     }
     .power_info_table .left_power_name dt{
@@ -201,6 +301,9 @@ export default {
          line-height: 28px;
        
     }
+    .power_info_table .el-button--mini{
+            padding: 4px 9px;
+    }
  </style>
  <style>
     .power_info_table .table_header{
@@ -212,14 +315,15 @@ export default {
     .power_info_table .table_header th{
           background:#F1F1F1;
           padding:0;
+          text-align: center;
     }
      .power_info_table .table_row td{
          color:#252525;
          font-size: 12px;
          padding:3px 0 2px;
+        text-align: center;
      }
  </style>
- 
 
 
 

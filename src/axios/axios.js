@@ -19,8 +19,40 @@ axios.interceptors.response.use(function (response) {
 }, function (error) {
     return Promise.reject(error);
 })
+// function ajax(config) {
+//     if (config.method.toLowerCase() == 'get') {
+//         return this.get(config.url, config.data);
+//     } else {
+//         return this.post(config.url, config.data);
+//     }
 
-
+// }
+// export function get(url, param) {
+//     return new Promise((resolve, reject) => {
+//         axios({
+//             method: 'get',
+//             url,
+//             params: param
+//         }).then(res => {
+//             resolve(res)
+//         })
+//     })
+// }
+// //post请求
+// export function post(url, param) {
+//     return new Promise((resolve, reject) => {
+//         axios({
+//             method: 'post',
+//             url,
+//             data: param,
+//             headers: {
+//                 'Content-Type': 'application/x-www-form-urlencoded'
+//             }
+//         }).then(res => {
+//             resolve(res)
+//         })
+//     })
+// }
 export default {
     //get请求
     get(url, param) {
