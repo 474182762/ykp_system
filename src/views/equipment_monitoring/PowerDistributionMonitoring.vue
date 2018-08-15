@@ -11,10 +11,32 @@
                     <div class="title">大商业1-2#低压配电系统图</div>
                 </div>
             </div>
+            <div class="power_info_list">
+
+            </div>
+            <div class="power_info_table clearfix">
+                <dl class="left_power_name">
+                    <dt>支路名称</dt>
+                    <dd v-for = '(item,index) in left_power_name' :key = 'index'>{{item}}</dd>
+                </dl>
+                <el-table :data="tableData" style="width: 100%" header-row-class-name = 'table_header'  stripe row-class-name ='table_row'>
+                    <el-table-column prop="powername" label="支路名称"></el-table-column>
+                    <el-table-column prop="name" label=" S1-2TM变" ></el-table-column>
+                    <el-table-column prop="address"label="电容补偿"></el-table-column>
+                     <el-table-column prop="powername" label="支路名称"></el-table-column>
+                    <el-table-column prop="name" label=" S1-2TM变" ></el-table-column>
+                    <el-table-column prop="address"label="电容补偿"></el-table-column>   
+                     <el-table-column prop="powername" label="支路名称"></el-table-column>
+                    <el-table-column prop="name" label=" S1-2TM变压" ></el-table-column>
+                    <el-table-column prop="address"label="电容补偿"></el-table-column>   
+                     <el-table-column prop="powername" label="支路名称"></el-table-column>
+                    <el-table-column prop="name" label=" S1-2TM变压" ></el-table-column>
+                    <el-table-column prop="address"label="电容补偿"></el-table-column>                                   
+                </el-table>
+            </div>
         </div>
     </div>
 </template>
-
 
 <script>
 export default { 
@@ -27,7 +49,15 @@ export default {
                 { name:'3#',active:false,dot:false},
                 { name:'4#',active:false,dot:false},
                 { name:'5#',active:false,dot:true}
-            ]
+            ],
+            left_power_name:['AB线电压','BC线电压','A相电流', 'B相电流', '用能趋势'],
+            tableData: [
+                {powername: 'AB线电压', name: '王小虎',  address: '上海'},
+                {powername: 'BC线电压',name: '王小虎', address: '上海市'},
+                {powername: 'CA线电压',name: '王小虎',address: '上海市'},
+                {powername: 'A相电流', name: '王小虎',address: '上海市'},
+                {powername: 'A相电流', name: '王小虎',address: '上海市'}
+                ]
         }
     }
 }
@@ -135,12 +165,61 @@ export default {
          border-right: none;
          border-radius:0 14px 14px 0;
      }
-      .header_info .middle .power_active{
-          background:#1881BF;
-          color:#fff;
-          border-color: #1881BF;
-      }
+    .header_info .middle .power_active{
+        background:#1881BF;
+        color:#fff;
+        border-color: #1881BF;
+    }
+    /*配电箱图例信息*/
+    .power_info_list{
+        width: 100%;
+        height: 370px;
+    }
+    /*支路信息*/
+    .power_info_table{
+        display: box;
+        display: -webkit-box;
+    }
+    .power_info_table .left_power_name{
+        width:99px;
+        color:#252525;
+        font-size: 12px;
+        border-radius:3px 3px 0px 0px;
+        border:1px solid #DADADA;
+        text-align: center;
+        margin:0 13px 0 72px;
+        background:rgba(247,251,252,1);
+    }
+    .power_info_table .left_power_name dt{
+        height:34px;
+        line-height: 34px;
+        background:rgba(241,241,241,1);
+        border-radius:3px 3px 0px 0px;
+    }
+    .power_info_table .left_power_name dd{
+         height:28px;
+         line-height: 28px;
+       
+    }
  </style>
+ <style>
+    .power_info_table .table_header{
+        height:34px;
+        line-height: 34px;
+        font-size:12px;
+        color:#3A3A3A;
+    }
+    .power_info_table .table_header th{
+          background:#F1F1F1;
+          padding:0;
+    }
+     .power_info_table .table_row td{
+         color:#252525;
+         font-size: 12px;
+         padding:3px 0 2px;
+     }
+ </style>
+ 
 
 
 
