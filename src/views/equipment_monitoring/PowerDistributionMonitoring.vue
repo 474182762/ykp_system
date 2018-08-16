@@ -27,6 +27,22 @@
                             <img src="../../assets/power4.png" alt="">
                         </div>
                     </li>
+                     <li>
+                        <div class="warp">
+                            <img src="../../assets/power4.png" alt="">
+                            <img src="../../assets/power4.png" alt="">
+                            <img src="../../assets/power4.png" alt="">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="warp">
+                            <img src="../../assets/power4.png" alt="">
+                            <img src="../../assets/power4.png" alt="">
+                            <img src="../../assets/power4.png" alt="">
+                            <img src="../../assets/power4.png" alt="">
+                            <img src="../../assets/power4.png" alt="">
+                        </div>
+                    </li>
                     <li>
                         <div class="warp">
                             <img src="../../assets/power4.png" alt="">
@@ -62,7 +78,7 @@
 
 <script>
 import ajax  from '../../axios/axios'
-
+import {getDistributionSelection,getDistributionBranch,getBranchParams} from '../../axios/url'
 export default { 
     name: 'PowerDistributionMonitoring',
     data(){
@@ -87,14 +103,12 @@ export default {
     mounted(){
         let This = this;
         console.log(ajax)
-        This.getInfo();
+        This.getBranchParamsList();
     },
     methods:{
-        getInfo(){
-            let data={
-
-            }
-            ajax.get('www.baidu.com',data,(res)=>{
+        /*获取支路信息列表 ?distributionId=1*/
+        getBranchParamsList(){
+            ajax.get(getBranchParams,{distributionId:1},(res)=>{
                 alert(111)
             })
         }

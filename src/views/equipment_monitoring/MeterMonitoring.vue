@@ -19,6 +19,147 @@
                 <div class="top_img">
                     <img src="../../assets/meter2.png" alt="">
                 </div>
+                <div class="metermon_warp">
+                     <div class="metermon_left">
+                        <div class="left_top">
+                            <span>4#</span>
+                            <img src="../../assets/meter1.png" alt="">
+                            <div class="line_1 line"></div>
+                            <div class="line_2 line"></div>
+                            <div class="line_3 line"></div>
+                            <div class="line_4 line"></div>
+                        </div>
+                        <div class="left_list_warp">
+                            <dl class="left_list list1">
+                                <dt>COM1<br/>电表</dt>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                            </dl>
+                            <dl class="left_list list2">
+                                <dt>COM2<br/>电表</dt>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                            </dl>
+                            <dl class="left_list list3">
+                                <dt>COM3<br/>电表</dt>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                            </dl>
+                            <dl class="left_list list4">
+                                <dt>COM4<br/>电表</dt>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="metermon_left metermon_right">
+                        <div class="left_top">
+                            <span>4#</span>
+                            <img src="../../assets/meter1.png" alt="">
+                            <div class="line_1 line"></div>
+                            <div class="line_2 line"></div>
+                            <div class="line_3 line"></div>
+                            <div class="line_4 line"></div>
+                        </div>
+                        <div class="left_list_warp">
+                            <dl class="left_list list1">
+                                <dt>COM1<br/>电表</dt>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                            </dl>
+                            <dl class="left_list list2">
+                                <dt>COM2<br/>电表</dt>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                            </dl>
+                            <dl class="left_list list3">
+                                <dt>COM3<br/>电表</dt>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                            </dl>
+                            <dl class="left_list list4">
+                                <dt>COM4<br/>电表</dt>
+                                <dd>
+                                    <div class="home_num home">300</div>
+                                    <div class="home_percent home">95%</div>
+                                    <div class="home_info">B1喷淋泵消火栓</div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>  
+                </div>
+               
             </div>
         </div>
     </div>
@@ -106,13 +247,210 @@
 /*关系列表图*/
 .metermon_info .metermon_list_img{
     width: 100%;
-    
+    width: 100%;
     position: absolute;
     top:27px;
+    height: 600px;
+    overflow-x: auto;
 }
 .metermon_list_img .top_img{
     width: 248px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    position: relative;
+    left:829px;
 }
+.metermon_list_img .top_img:after{
+    content:'';
+    display: block;
+    width: 2px;
+    height: 39px;
+    background: #2274A4;
+    position: absolute;
+    left: 97px;
+    top: 39px;
+
+}
+ .metermon_list_img .top_img:before{
+    content:'';
+    display: block;
+    width: 2px;
+    height: 39px;
+    background: #2274A4;
+    position: absolute;
+    right: 89px;
+    top: 39px;
+}
+ .metermon_list_img .metermon_warp{
+     display: box;
+    display: -webkit-box;
+    display: flex;
+     width: 2340px; 
+ }
+/*左侧模块*/
+.metermon_left{
+    width: 1170px;
+    position: relative;
+    top:50px;
+}
+.metermon_left .left_top{
+    width: 96px;
+    height: 36px;
+    position: relative;
+    left:352px;
+}
+.metermon_left .left_top span{
+    position: absolute;
+    left:50%;
+    top:-16px;
+    transform: translateX(-50%);
+    color:#DE5959;
+    font-size: 14px;
+
+}
+.metermon_left .left_top:after{
+    content:'';
+    display: block;
+    width: 2px;
+    height: 39px;
+    background: #2274A4;
+    position: absolute;
+    right: 12px;
+    top: -38px;
+}
+.metermon_left .left_top:before{
+    content:'';
+    display: block;
+    width: 494px;
+    height: 2px;
+    background: #2274A4;
+    position: absolute;
+    left: 82px;
+    top: -38px;
+}
+.metermon_left  .left_top .line{
+    width: 2px;
+    background: #3FBC7A;
+    position: absolute;
+    top: 29px;
+}
+.metermon_left  .left_top .line_1{
+    height: 22px;
+    right: 45px;
+}
+.metermon_left  .left_top .line_2{
+    height: 30px;
+    right: 35px;
+}
+.metermon_left  .left_top .line_3{
+    height: 30px;
+    right: 25px;
+}
+.metermon_left  .left_top .line_4{
+    height: 22px;
+    right: 15px;
+}
+/*列表样式*/
+.metermon_left .left_list_warp{
+    position: relative;
+}
+.metermon_left .left_list{
+    font-size: 12px;
+    border-left:2px solid #3FBC7A;
+    padding-top: 30px;
+    position: absolute;
+    
+}
+.metermon_left .list1{
+    width: 274px;
+    left: 40px;
+    top: 13px;
+    
+}
+.metermon_left .list2{
+    width: 274px;
+    left: 320px;
+    top: 21px;
+}
+.metermon_left .list3{
+    width: 248px;
+    left: 648px;
+    top: 21px;
+}
+.metermon_left .list4{
+    width: 469px;
+    left: 900px;
+    top: 13px;  
+}
+.metermon_left .left_list:after{
+    content:'';
+    display: block;
+    height: 2px;
+    background: #3FBC7A;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.metermon_left .list1:after{
+    width: 359px;
+}
+.metermon_left .list2:after{
+    width: 90px;
+}
+.metermon_left .list3:after{
+    width:228px;
+    left: -228px;
+}
+.metermon_left .list4:after{
+    width:469px;
+    left: -469px;
+}
+.metermon_left .left_list dt{
+    color:#2274A4;
+    font-size: 14px;
+    padding-left: 12px;
+    margin-bottom: 6px;
+}
+.metermon_left .left_list dd{
+     display: box;
+    display: -webkit-box;
+    display: flex;
+    margin-bottom: 12px;
+}
+.metermon_left .left_list .home{
+    width: 60px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 12px;
+}
+.metermon_left .left_list .home_num{
+    background: #3FBC7A;
+    border:1px solid #3FBC7A;
+    color: #fff;
+}
+.metermon_left .left_list .home_percent{
+    border:1px solid #3FBC7A;
+    color: #3FBC7A;
+    background: #fff;
+}
+.metermon_left .left_list .home_info{
+    height: 24px;
+    line-height: 24px;
+    color:#3A3A3A;
+    font-size: 14px;
+    margin-left: 10px;
+}
+.metermon_right{
+
+}
+
+.metermon_right .left_top:after{
+    left: 30px
+}
+.metermon_right .left_top:before{
+    width: 567px;
+    left: -535px;
+}
+
 </style>
 
