@@ -159,14 +159,115 @@
                         </div>
                     </div>  
                 </div>
-               
             </div>
         </div>
+        <el-dialog :visible.sync="dialogTableVisible" title="1#采集器历史数据" class="metermon_dialog">
+            <div class="dialog_info_list">
+                <ul class="left">
+                    <li class="acdate">今天</li>
+                    <li>两天内</li>
+                    <li>三天内</li>
+                </ul>
+               <div class="right"><span>优化建议：</span>设备一天内在线率为98%，处于正常状态</div> 
+            </div>
+            <el-table :data="gridData" stripe header-row-class-name='metermon_table_header'>
+                <el-table-column property="date" label="日期" width="150"></el-table-column>
+                <el-table-column property="name" label="姓名" width="200"></el-table-column>
+                <el-table-column property="address" label="地址"></el-table-column>
+            </el-table>
+            <div class="dialog_info_close">
+                <el-button size="mini" round>关闭</el-button>
+            </div>
+        </el-dialog>
     </div>
 </template>
 <script>
+export default { 
+    name: 'PowerDistributionMonitoring',
+    data(){
+        return{
+            gridData: [{
+            date: '2016-05-02',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+            date: '2016-05-04',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+            date: '2016-05-01',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+            date: '2016-05-03',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+            }],
+            dialogTableVisible: true
+        }
+    },
+    mounted(){
+        let This = this;
+        console.log(ajax)
+    },
+    methods:{
+
+    }
+}
 </script>
 <style scoped>
+/*弹框*/
+.metermon_dialog{
+    
+}
+.metermon_dialog .dialog_info_close{
+    padding-top: 50px;
+    text-align: center;
+}
+.metermon_dialog .dialog_info_list{
+    width: 100%;
+    display: box;
+    display: -webkit-box;
+    display: flex;
+    margin-bottom: 22px;
+}
+.dialog_info_list .left{
+    width:185px;
+    height:28px;
+    background:#fff;
+    border:1px solid #C3C9D5;
+    border-radius:14px;
+    display: box;
+    display: -webkit-box;
+    display: flex;
+    overflow: hidden;
+   
+}
+.dialog_info_list .left li{
+    -webkit-box-flex: 1;
+    flex:1;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+.dialog_info_list .left .acdate{
+    color:#fff;
+    background: #188FBF;
+}
+.dialog_info_list .left li:nth-of-type(1),
+.dialog_info_list .left li:nth-of-type(2){
+    border-right:1px solid #C3C9D5;
+}
+
+.dialog_info_list .right{
+    -webkit-box-flex: 1;
+    flex:1;
+    text-align: right;
+    color:#3a3a3a; 
+}
+.dialog_info_list .right span{
+    color:#188FBF
+}
 .metermon_content {
     background: #fff;
     height: 100%;
@@ -453,4 +554,51 @@
 }
 
 </style>
+<style>
+.metermon_dialog .el-dialog__header{
+    padding:0;
+    height:40px;
+    line-height:40px;
+    background:rgba(24,129,191,1);
+    border-radius:5px 5px 0px 0px;
+    padding-left:29px;
+    position: relative;
+    
+    
+}
+.metermon_dialog .el-dialog__header .el-dialog__title{
+    color:#fff;
+    font-size: 16px;
+}
+.metermon_dialog .el-dialog__header  .el-dialog__headerbtn{
+    top:50%;
+    transform: translateY(-50%);
+ 
+}
+.metermon_dialog  .el-dialog__headerbtn .el-dialog__close{
+    font-size: 12px;
+    color:#fff;
+    cursor: pointer;
+    padding:2px;
+    border:1px solid #fff;
+    border-radius:50%;
+}
+.metermon_dialog  .metermon_table_header th{
+    background:rgba(241,241,241,1);
+    font-size: 14px;
+    color:#3a3a3a;
+}
+.metermon_dialog .el-table--striped .el-table__body tr.el-table__row--striped td{
+    background: #F7FBFC;
+    /* border:none; */
+}
+.metermon_dialog .el-table td{
+    /* border:none; */
+}
+.metermon_dialog .el-button--mini{
+    width:90px;
+    font-size: 14px;
+}
+</style>
+
 
