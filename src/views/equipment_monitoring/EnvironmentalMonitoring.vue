@@ -5,8 +5,47 @@
             <el-tree :data="data" :default-expanded-keys="[0, 2]"  node-key="id" :props="defaultProps" class="environment_tree"></el-tree>
         </div>
         <div class="home_info">
-            
+            <h2>环境监测</h2>
+            <div class="home_warp">
+                <h3>住院部北楼1F</h3>
+                <ul class=home_state>
+                    <li>正常</li>
+                    <li>异常</li>
+                </ul>
+            </div>
         </div>
+
+        <el-dialog :visible.sync="dialogTableVisible" title="116号房间逐时曲线" class="environment_dialog" width='66%'>
+            <div class="dialog_info_list">
+                
+               <el-form :inline="true" :model="formInline" class="demo-form-inline">
+                    <el-form-item label="参数选择：">
+                        <el-select v-model="formInline.region" placeholder="亮度" size='mini'>
+                            <el-option label="区域一" value="shanghai"></el-option>
+                            <el-option label="区域二" value="beijing"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label="时间粒度：">
+                        <el-select v-model="formInline.region" placeholder="时间" size='mini'> 
+                            <el-option label="区域一" value="shanghai"></el-option>
+                            <el-option label="区域二" value="beijing"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label="活动时间">
+                        <el-col :span="11">
+                            <el-date-picker size='mini' type="date" placeholder="选择日期" v-model="formInline.date1" style="width: 100%;"></el-date-picker>
+                        </el-col>
+                        <el-col class="line" :span="2">至</el-col>
+                        <el-col :span="11">
+                            <el-time-picker  size='mini' type="fixed-time" placeholder="选择时间" v-model="formInline.date2" style="width: 100%;"></el-time-picker>
+                        </el-col>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" size='mini' @click="onSubmit">查询</el-button>
+                    </el-form-item>
+                </el-form>
+            </div>
+        </el-dialog>
     </div>
 </template>
 
@@ -71,7 +110,13 @@ export default {
             defaultProps: {
                 children: 'children',
                 label: 'label'
-            }
+            },
+            formInline: {
+                region: '',
+                date1: '',
+                date2: ''
+            },
+            dialogTableVisible: true
         }
     },
     mounted(){
@@ -86,7 +131,16 @@ export default {
 
 <style scoped>
 .EnvironmentalMonitoring{
-
+    display: box;
+    display: -webkit-box;
+    display: flex;
+}
+.EnvironmentalMonitoring .home_info{
+    box-flex:1;
+    flex: 1;
+    -webkit-box-flex: 1;
+    background-color: #fff;
+    margin-left: 12px;
 }
 .EnvironmentalMonitoring .area_list{
     width: 295px;
@@ -98,8 +152,86 @@ export default {
     color:#2274A4;
     margin-bottom: 16px;
 }
+.EnvironmentalMonitoring .home_info h2{
+    font-size: 16px;
+    color:#2274A4;
+    height:36px;
+    line-height: 36px;
+    background:rgba(245,249,249,1);
+    padding-left: 34px;
+}
+.home_info .home_warp {
+    padding: 27px;
+}
+.home_info .home_warp h3{
+    text-align: center;
+    font-size: 20px;
+    color:#3a3a3a;
+    font-weight: normal;
+}
+.home_info .home_warp .home_state{
+    display: box;
+    display: -webkit-box;
+    display: flex;
+}
+.home_warp .home_state li{
+    color: #3a3a3a;
+    font-size: 14px;
+    margin-left: 40px;
+    position: relative;
+    left:60%;
+}
+.home_warp .home_state li:after{
+    content:'';
+    display: block;
+    width:12px;
+    height:12px;
+    border-radius: 50%;
+    position: absolute;
+    top:50%;
+    left:-20px;
+    transform: translateY(-50%);
+    background-color: #4BC484; 
+}
+.home_warp .home_state li:last-child:after{
+    background-color: #F57272; 
+}
+
 </style>
 <style>
+.environment_dialog .el-dialog{
+    min-width:960px;
+}
+.environment_dialog .el-dialog__header {
+    padding: 0;
+    height: 40px;
+    line-height: 40px;
+    background: rgba(24,129,191,1);
+    border-radius: 5px 5px 0px 0px;
+    padding-left: 29px;
+    position: relative;
+}
+.environment_dialog .el-dialog__header .el-dialog__title {
+    color: #fff;
+    font-size: 16px;
+}
+.environment_dialog .el-dialog__header  .el-dialog__headerbtn{
+    top:50%;
+    transform: translateY(-50%);
+ 
+}
+.environment_dialog  .el-dialog__headerbtn .el-dialog__close{
+    font-size: 12px;
+    color:#fff;
+    cursor: pointer;
+    padding:2px;
+    border:1px solid #fff;
+    border-radius:50%;
+}
+.environment_dialog .el-select{
+    width: 90px;
+}
+
 .environment_tree{
 
 }
