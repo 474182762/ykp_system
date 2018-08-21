@@ -7,18 +7,20 @@
         <div class="home_info">
             <h2>环境监测</h2>
             <div class="home_warp">
-                <h3>住院部北楼1F</h3>
+                <h3 @click = 'homeDialog'>住院部北楼1F</h3>
                 <ul class=home_state>
                     <li>正常</li>
                     <li>异常</li>
                 </ul>
+                <div class="home_image" id="home_image">
+                    <img src="../../assets/home.png" alt="">
+                </div>
             </div>
         </div>
 
         <el-dialog :visible.sync="dialogTableVisible" title="116号房间逐时曲线" class="environment_dialog" width='66%'>
             <div class="dialog_info_list">
-                
-               <el-form :inline="true" :model="formInline" class="demo-form-inline">
+               <el-form :inline="true" :model="formInline" class="home_from">
                     <el-form-item label="参数选择：">
                         <el-select v-model="formInline.region" placeholder="亮度" size='mini'>
                             <el-option label="区域一" value="shanghai"></el-option>
@@ -37,13 +39,14 @@
                         </el-col>
                         <el-col class="line" :span="2">至</el-col>
                         <el-col :span="11">
-                            <el-time-picker  size='mini' type="fixed-time" placeholder="选择时间" v-model="formInline.date2" style="width: 100%;"></el-time-picker>
+                            <el-date-picker  size='mini' type="date" placeholder="选择日期" v-model="formInline.date2" style="width: 100%;"></el-date-picker>
                         </el-col>
                     </el-form-item>
                     <el-form-item>
                         <el-button type="primary" size='mini' @click="onSubmit">查询</el-button>
                     </el-form-item>
                 </el-form>
+                <div class="home_chart" ref="homeChart" id = "home_chart"></div>
             </div>
         </el-dialog>
     </div>
@@ -53,6 +56,7 @@
 
 
 <script>
+ var echarts = require('echarts');
 export default { 
     name: 'PowerDistributionMonitoring',
     data(){
@@ -116,20 +120,66 @@ export default {
                 date1: '',
                 date2: ''
             },
-            dialogTableVisible: true
+            dialogTableVisible: false
         }
     },
     mounted(){
         let This = this;
+        
     },
     methods:{
+        homeDialog(){
+            let This = this;
+            let oTimer = null;
+            This.dialogTableVisible = true;
 
+            clearTimeout(oTimer)
+
+            oTimer=setTimeout(function() {
+                This.getHomeLine();
+            }, 200);
+          
+        },
+        getHomeLine(){
+            let This = this;
+            let home_chart = document.getElementById('home_chart');
+            
+            console.log(this.$refs.homeChart)
+            let myChart = echarts.init(home_chart)
+            let option = {
+                xAxis: {
+                    type: 'category',
+                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    data: [820, 932, 901, 934, 1290, 1330, 1320],
+                    type: 'line',
+                    smooth: true
+                }]
+            };
+            myChart.setOption(option)
+            
+        },
+        /*数据提交*/
+        onSubmit(){
+
+        }
     }
 }
 
 </script>
 
 <style scoped>
+.dialog_info_list .home_chart{
+    width: 100%;
+    height: 550px;
+}
+.dialog_info_list .home_from{
+    text-align: center;
+}
 .EnvironmentalMonitoring{
     display: box;
     display: -webkit-box;
