@@ -161,7 +161,7 @@
                 </div>
             </div>
         </div>
-        <el-dialog :visible.sync="dialogTableVisible" title="1#采集器历史数据" class="metermon_dialog">
+        <!-- <el-dialog :visible.sync="dialogTableVisible" title="1#采集器历史数据" class="metermon_dialog">
             <div class="dialog_info_list">
                 <ul class="left">
                     <li class="acdate">今天</li>
@@ -178,14 +178,42 @@
             <div class="dialog_info_close">
                 <el-button size="mini" round>关闭</el-button>
             </div>
+        </el-dialog> -->
+        <el-dialog :visible.sync="dialogTableVisible" title="1#采集器历史数据" class="metermon_dialog">
+            <div class="dialog_info_list">
+                <ul class="left">
+                    <li  :class="{acdate:item.active}" @click = 'getMeterDetails(item,index)' v-for = "(item,index) in timelist" :key = "index">{{item.time}}</li>
+                </ul>
+               <div class="right"><span>优化建议：</span>设备一天内在线率为98%，处于正常状态</div> 
+            </div>
+            <el-table :data="meterDetail" stripe header-row-class-name='metermon_table_header'>
+                <el-table-column property="branchValue" label="表计读数(kWh)" ></el-table-column>
+                <el-table-column property="status" label="表计状态"></el-table-column>
+                <el-table-column property="reportTime" label="报告生成时间"></el-table-column>
+            </el-table>
+            <div class="dialog_info_close">
+                <el-button size="mini" round>关闭</el-button>
+            </div>
         </el-dialog>
     </div>
 </template>
 <script>
+/*待封装函数*/
+/*前天/昨天/今天*/
+function getTime(time){
+    let day1 = new Date();
+    let date =null;
+    day1.setTime(day1.getTime()-time);
+    date = day1.getFullYear()+"-" + (day1.getMonth()+1) + "-" + day1.getDate();
+    return date
+}
 export default { 
     name: 'PowerDistributionMonitoring',
     data(){
         return{
+            timelist:[{time:'今天',active:true,date:getTime(0)},{time:'两天内',active:false,date:getTime(24*60*60*1000)},{time:'三天内',active:false,date:getTime(24*60*60*1000*2)}],
+            meterDetail: [],
+            meterMonitor:[],
             gridData: [{
             date: '2016-05-02',
             name: '王小虎',
@@ -207,11 +235,72 @@ export default {
         }
     },
     mounted(){
-        let This = this;
-        console.log(ajax)
+       let This = this;
+        // This.getMeterDetails(This.timelist[0],0)
+        // This.getMeterMonitor()
     },
     methods:{
+         /*获取表计数据*/
+        getMeterMonitor(){
+            let This = this;
+            let config = {
+                    method: 'GET',
+                    url: '/api/admin/monitor/getMeterMonitor',
+                    data: {
+                        pmId: 1,
+                    },
+                };
+             This.$axios.ajax(config).then((res) => {
+                 if(res.code==200){
+                    This.meterMonitor = res.data
+                    console.log(This.meterMonitor)
+                 }else{
+                     This.$message.error(res.msg);
+                 }
+                 
+             })
+        },
+        /*获取历史数据*/
+        getMeterDetails(item,index){
+            let This = this;
+            let config = {
+                    method: 'GET',
+                    url: '/api/admin/monitor/getMeterDetails',
+                    data: {
+                        date: item.date,
+                    },
+                };
+            This.timelist.forEach((ele,index)=>{
 
+                ele.active =false;
+            })
+
+            item.active =true;
+
+            This.$axios.ajax(config).then((res) => {
+                 if(res.code==200){
+
+                    res.data.forEach((item,index) => {
+
+                        if(item.status){
+                            item.status ='正常'
+                        }else{
+                            item.status ='中断'
+                        } 
+                    });
+
+                    This.meterDetail =  res.data
+                 }else{
+                     
+                     This.$message.error(res.msg);
+                 }
+                
+               
+            }).catch((error) => {
+
+                console.log(error);
+            }); 
+        }
     }
 }
 </script>
@@ -560,7 +649,7 @@ export default {
     height:40px;
     line-height:40px;
     background:rgba(24,129,191,1);
-    border-radius:5px 5px 0px 0px;
+    /* border-radius:5px 5px 0px 0px; */
     padding-left:29px;
     position: relative;
     

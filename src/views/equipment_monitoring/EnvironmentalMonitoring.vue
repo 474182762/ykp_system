@@ -3,6 +3,7 @@
         <div class="area_list">
             <h2>区域选择</h2>
             <el-tree :data="data" :default-expanded-keys="[0, 2]"  node-key="id" :props="defaultProps" class="environment_tree"></el-tree>
+            <!-- <el-tree :data="regionTree" :default-expanded-keys="[0, 2]"  node-key="id" :props="defaultProps" class="environment_tree"></el-tree> -->
         </div>
         <div class="home_info">
             <h2>环境监测</h2>
@@ -43,7 +44,7 @@
                         </el-col>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" size='mini' @click="onSubmit">查询</el-button>
+                        <el-button type="primary" size='mini' @click="onDataSubmit">查询</el-button>
                     </el-form-item>
                 </el-form>
                 <div class="home_chart" ref="homeChart" id = "home_chart"></div>
@@ -125,7 +126,7 @@ export default {
     },
     mounted(){
         let This = this;
-        
+        This.getRegionTree()
     },
     methods:{
         homeDialog(){
@@ -163,8 +164,30 @@ export default {
             myChart.setOption(option)
             
         },
+        getRegionTree(){
+            let This = this;
+            let config = {
+                    method: 'GET',
+                    url: '/api/admin/monitor/getRegionTree',
+                    data: {
+                        pmId: 1,
+                    },
+                };
+            This.$axios.ajax(config).then((res) => {
+        
+                if(res.code==200){
+
+                    This.regionTree = res.data
+                    console.log(This.regionTree)
+                }else{
+
+                    This.$message.error(res.msg);
+                }
+                 
+            })
+        },
         /*数据提交*/
-        onSubmit(){
+        onDataSubmit(){
 
         }
     }
@@ -246,7 +269,9 @@ export default {
 .home_warp .home_state li:last-child:after{
     background-color: #F57272; 
 }
-
+.home_warp .home_image{
+    margin-top: 34px;
+}
 </style>
 <style>
 .environment_dialog .el-dialog{
