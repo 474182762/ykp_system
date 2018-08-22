@@ -163,6 +163,52 @@ export const distributionBranch ={
 				"branchName": "支路2",
 				"branchType": 2
 			}]
+		},{
+			"parentOrder": null,
+			"branchInfos": [{
+				"branchId": 1,
+				"branchOpenStatus": 0.0,
+				"branchOrder": "1",
+				"parentOrder": "",
+				"branchName": "支路1",
+				"branchType": 0
+			}, {
+				"branchId": 4,
+				"branchOpenStatus": 0.0,
+				"branchOrder": "1",
+				"parentOrder": "",
+				"branchName": "支路4",
+				"branchType": 1
+			}, {
+				"branchId": 2,
+				"branchOpenStatus": 0.0,
+				"branchOrder": "2",
+				"parentOrder": "",
+				"branchName": "支路2",
+				"branchType": 2
+			},{
+				"branchId": 12,
+				"branchOpenStatus": 0.0,
+				"branchOrder": "2",
+				"parentOrder": "",
+				"branchName": "支路2",
+				"branchType": 2
+            },
+            {
+				"branchId": 13,
+				"branchOpenStatus": 0.0,
+				"branchOrder": "2",
+				"parentOrder": "",
+				"branchName": "支路2",
+				"branchType": 2
+			},{
+				"branchId": 14,
+				"branchOpenStatus": 0.0,
+				"branchOrder": "2",
+				"parentOrder": "",
+				"branchName": "支路2",
+				"branchType": 2
+			}]
 		}, {
 			"parentOrder": "3335",
 			"branchInfos": [{
