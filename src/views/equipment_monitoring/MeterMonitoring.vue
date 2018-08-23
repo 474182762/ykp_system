@@ -20,25 +20,22 @@
                     <img src="../../assets/meter2.png" alt="">
                 </div>
                 <div class="metermon_warp">
-                     <div class="metermon_left">
+                     <div class="metermon_left" v-for='(item,index) in meterMonitor' :key='item.collectorId'>
                         <div class="left_top">
-                            <span>4#</span>
-                            <img src="../../assets/meter1.png" alt="">
-                            <div class="line_1 line"></div>
-                            <div class="line_2 line"></div>
-                            <div class="line_3 line"></div>
-                            <div class="line_4 line"></div>
+                            <span>{{item.collectorCode}}#</span>
+                            <img src="../../assets/meter1.png" alt="">   
+                            <div class="line" :class="'line_'+(index1+1)" v-for="(ele,index1) in item.coms" :key='ele.comId'></div>
                         </div>
                         <div class="left_list_warp">
-                            <dl class="left_list list1">
-                                <dt>COM1<br/>电表</dt>
-                                <dd>
-                                    <div class="home_num home">300</div>
-                                    <div class="home_percent home">95%</div>
-                                    <div class="home_info">B1喷淋泵消火栓</div>
-                                </dd>
-                            </dl>
-                            <dl class="left_list list2">
+                             <dl :class="'list'+(index1+1)" class="left_list" v-for="(ele,index1) in item.coms" :key='ele.comId' >
+                                <dt>{{ele.comName}}<br/>电表</dt>
+                                  <dd v-for="(item2, index2) in ele.branches" :key='item2.branchId'>
+                                    <div class="home_num home">{{item2.branchValue}}</div>
+                                    <div class="home_percent home">{{item2.onlineRate}}%</div>
+                                    <div class="home_info">{{item2.branchName}}</div>
+                                </dd>  
+                            </dl> 
+                            <!-- <dl class="left_list list2">
                                 <dt>COM2<br/>电表</dt>
                                 <dd>
                                     <div class="home_num home">300</div>
@@ -86,10 +83,10 @@
                                     <div class="home_percent home">95%</div>
                                     <div class="home_info">B1喷淋泵消火栓</div>
                                 </dd>
-                            </dl>
+                            </dl> -->
                         </div>
                     </div>
-                    <div class="metermon_left metermon_right">
+                    <!-- <div class="metermon_left metermon_right">
                         <div class="left_top">
                             <span>4#</span>
                             <img src="../../assets/meter1.png" alt="">
@@ -157,7 +154,7 @@
                                 </dd>
                             </dl>
                         </div>
-                    </div>  
+                    </div>   -->
                 </div>
             </div>
         </div>
@@ -184,7 +181,7 @@
                 <ul class="left">
                     <li  :class="{acdate:item.active}" @click = 'getMeterDetails(item,index)' v-for = "(item,index) in timelist" :key = "index">{{item.time}}</li>
                 </ul>
-               <div class="right"><span>优化建议：</span>设备一天内在线率为98%，处于正常状态</div> 
+               <!-- <div class="right"><span>优化建议：</span>{{suggestion}}</div>  -->
             </div>
             <el-table :data="meterDetail" stripe header-row-class-name='metermon_table_header'>
                 <el-table-column property="branchValue" label="表计读数(kWh)" ></el-table-column>
@@ -207,6 +204,8 @@ function getTime(time){
     date = day1.getFullYear()+"-" + (day1.getMonth()+1) + "-" + day1.getDate();
     return date
 }
+import ajax  from '../../axios/axios'
+import {meterMonitor} from '../../axios/datalist'
 export default { 
     name: 'PowerDistributionMonitoring',
     data(){
@@ -231,29 +230,24 @@ export default {
             name: '王小虎',
             address: '上海市普陀区金沙江路 1518 弄'
             }],
-            dialogTableVisible: true
+            dialogTableVisible: false
         }
     },
     mounted(){
        let This = this;
         // This.getMeterDetails(This.timelist[0],0)
-        // This.getMeterMonitor()
+        This.getMeterMonitor()
     },
     methods:{
          /*获取表计数据*/
         getMeterMonitor(){
             let This = this;
-            let config = {
-                    method: 'GET',
-                    url: '/api/admin/monitor/getMeterMonitor',
-                    data: {
-                        pmId: 1,
-                    },
-                };
-             This.$axios.ajax(config).then((res) => {
-                 if(res.code==200){
-                    This.meterMonitor = res.data
-                    console.log(This.meterMonitor)
+             ajax.get('http://localhost:8080',{pmId:1}).then((res) => {
+                 let code = 200
+                 if(code==200){
+                     This.meterMonitor = meterMonitor.data;
+                    // This.meterMonitor = res.data
+                    console.log(This.meterMonitor[0].coms[0].comId)
                  }else{
                      This.$message.error(res.msg);
                  }

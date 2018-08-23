@@ -1,6 +1,6 @@
 <template>
     <div class="power_content">
-        <h2>低压配电系统图 <span>Opc连接成功</span></h2>
+        <h2>低压配电系统图 <span v-if="connectStatus=='1'">Opc连接成功</span><span class="error" v-else>Opc连接失败</span></h2>
         <div class="power_info_warp">
             <div class="header_info clearfix">
                 <div class="left">{{distributionBranch.powerDescription}}</div>
@@ -15,12 +15,13 @@
                     <li>相对湿度：{{distributionBranch.humidity}}</li>
                 </ul>
             </div>
-            <div class="power_info_list" :style="{width:lineWidth+60+'px'}">
+            <div class="power_info_list" :style="{width:lineWidth+62+'px'}">
                 <div class="line" :style="{width:lineWidth-108+'px'}"></div>
                 <div class="left_img" ref="left_img">
-                    <img src="../../assets/power1.png" alt="">
-                    <img src="../../assets/power2.png" alt="">
-                    <img src="../../assets/power3.png" alt="">
+                    <div class="img_list"><span>1111</span><img src="../../assets/power1.png" alt=""></div>
+                    <div class="img_list"><span>2222</span><img src="../../assets/power2.png" alt=""></div>
+                    <div class="img_list"><span>3333</span><img src="../../assets/power3.png" alt=""></div>
+                    
                     <div class="temperature_list">
                         <ul class="left list">
                             <li v-for="(item,index) in distributionBranch.factors" :key = "index"><span>{{item.name}}</span>{{item.data}}</li>
@@ -33,10 +34,7 @@
                 <ul class="right_img" ref="rightBranch">
                     <li v-for="(item, index) in distributionBranch.branchList" :key='index'>
                         <div class="warp">
-
                             <div class="img_list" v-for="ele in item.branchInfos" :key ='ele.branchId'><span>{{ele.branchOrder}}</span><img src="../../assets/power4.png" alt=""></div>
-                            <!-- <img src="../../assets/power4.png" alt="">
-                            <img src="../../assets/power4.png" alt=""> -->
                         </div>
                     </li>
                     
@@ -48,10 +46,36 @@
                     <dd v-for = '(item,index) in left_power_name' :key = 'index'>{{item}}</dd>
                 </dl>
                 <el-table :data="tableData" style="width: 100%" header-row-class-name = 'table_header'  stripe row-class-name ='table_row'>
-                    <el-table-column  prop="powername" label="我的"></el-table-column>
-                    <el-table-column v-for="(item,index) in tableHeader" :prop="item.branchName" :label="item" :key = 'index'></el-table-column>
+                    <!-- <el-table-column  prop="powername" label="我的"></el-table-column> -->
+                    <el-table-column v-for="(item,index) in tableHeader" prop="powername" :label="item.branchName" :key = 'item.branchId'></el-table-column>
                 </el-table>
             </div>
+            <!-- 右下角框 -->
+            <!-- <div class="power_info_list fixed_power_list" :style="{width:lineWidth+62+'px'}">
+                <div class="line" :style="{width:lineWidth-108+'px'}"></div>
+                <div class="left_img" ref="left_img">
+                    <div class="img_list"><span>1111</span><img src="../../assets/power1.png" alt=""></div>
+                    <div class="img_list"><span>2222</span><img src="../../assets/power2.png" alt=""></div>
+                    <div class="img_list"><span>3333</span><img src="../../assets/power3.png" alt=""></div>
+                    
+                    <div class="temperature_list">
+                        <ul class="left list">
+                            <li v-for="(item,index) in distributionBranch.factors" :key = "index"><span>{{item.name}}</span>{{item.data}}</li>
+                        </ul>
+                        <ul class="right list">
+                            <li v-for="(item,index) in distributionBranch.temperatures" :key = "index"><span>{{item.name}}</span>{{item.data}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <ul class="right_img" ref="rightBranch">
+                    <li v-for="(item, index) in distributionBranch.branchList" :key='index'>
+                        <div class="warp">
+                            <div class="img_list" v-for="ele in item.branchInfos" :key ='ele.branchId'><span>{{ele.branchOrder}}</span><img src="../../assets/power4.png" alt=""></div>
+                        </div>
+                    </li>
+                    
+                </ul>
+            </div> -->
         </div>
     </div>
 </template>
@@ -75,30 +99,27 @@ export default {
             distribution:'大商业1-2#',
             lineWidth:'100%',
             connectStatus:'', /*连接状态*/
-            left_power_name:['AB线电压','BC线电压','CA线电压', 'A相电流','B相电流','C相电流','报警类型','电表报警','峰值功率', '用能趋势'],
+            left_power_name:[],
             BranchParams:[], /*支路参数列表*/
             tableHeader:[],  
             distributionBranch:{}, /*支路信息列表*/
             tableData: [
                     {powername: '325', name: '65',  address: '552'},
                     {powername: '2727',name: '7272', address: '424'},
-                    {powername: '42',name: '王小虎',address: '424'},
-                    {powername: '42',name: '王小虎',address: '424'},
-                    {powername: '325', name: '65',  address: '552'},
-                    {powername: '2727',name: '7272', address: '424'},
-                    {powername: '42',name: '王小虎',address: '424'},
-                    {powername: '42',name: '王小虎',address: '424'},
-                    {powername: '42',name: '王小虎',address: '424'},
+                    // {powername: '42',name: '王小虎',address: '424'},
+                    // {powername: '42',name: '王小虎',address: '424'},
+                    // {powername: '325', name: '65',  address: '552'},
+                    // {powername: '2727',name: '7272', address: '424'},
+                    // {powername: '42',name: '王小虎',address: '424'},
+                    // {powername: '42',name: '王小虎',address: '424'},
+                    // {powername: '42',name: '王小虎',address: '424'},
                     {powername: <el-button size="mini" round>用能趋势</el-button>, name: <el-button size="mini" round>用能趋势</el-button>,address: <el-button size="mini" round>用能趋势</el-button>}
                 ]
         }
     },
     mounted(){
         let This = this;
-        This.getBranchParamsList(1);
-        This.getDistributionBranch(1);
         This.getDistributionSelection();
-        console.log(This.$refs.left_img.offsetWidth)
         // This.tableData[0]
     },
     methods:{
@@ -111,21 +132,28 @@ export default {
             item.active=true;
             This.getBranchParamsList(item.id);
             This.getDistributionBranch(item.id);
+            This.connectStatus = item.connectStatus;
         },
         /*获取支路参数信息 ?distributionId=1*/
         getBranchParamsList(id){
             let This = this;
             // url:getBranchParams
             ajax.get('http://localhost:8080',{distributionId:id}).then((res) => {
-                if(res.code==200){
-                    This.BranchParams = res.data;
+                let code =200;
+                if(code==200){
+                    This.left_power_name=[];
+                    branchParams.data.forEach((item,index)=>{
+                        This.left_power_name.push(item.paramName)
+                    })
+                    This.left_power_name.push('用能趋势')
+                    // This.BranchParams = res.data;
                 }else{
                      This.$message.error(res.msg);
                 }
-                This.BranchParams.forEach((item,index)=>{
-                 This.tableHeader.push(item.branchName);  
-                })
-                console.log(This.tableHeader)
+                // This.BranchParams.forEach((item,index)=>{
+                //  This.tableHeader.push(item.branchName);  
+                // })
+                // console.log(This.tableHeader)
             }).catch((error) => {
                 console.log(error);
             });
@@ -134,18 +162,24 @@ export default {
         /*获取支路信息列表 ?distributionId=1*/
         getDistributionBranch(id){
             let This= this;
-            
             // url:distributionBranch
             ajax.get('http://localhost:8080',{distributionId:id}).then((res) => {
                 let code =200
                 let oTimer = null;
+                   
                 if(code==200){
+                     
                     This.distributionBranch = distributionBranch.data;
                     clearTimeout(oTimer)
                     oTimer=setTimeout(function(){
                         This.lineWidth = This.$refs.left_img.offsetWidth+This.$refs.rightBranch.offsetWidth
                     },100)
-                    
+                    This.tableHeader =[];
+                    distributionBranch.data.branchList.forEach((item)=>{
+                        item.branchInfos.forEach((ele)=>{
+                            This.tableHeader.push(ele)
+                        })
+                    })
                     // This.distributionBranch = res.data;
                 }else{
                     This.$message.error(res.msg);
@@ -166,7 +200,9 @@ export default {
                         if(index==0){
                             item.active = true;
                             This.distribution=item.name
-                            
+                            This.getBranchParamsList(item.id);
+                            This.getDistributionBranch(item.id);
+                            This.connectStatus = item.connectStatus  
                         }else{
                             item.active = false;
                         }
@@ -176,6 +212,7 @@ export default {
                             item.alertStatus = false
                         }
                     })
+                    
                     This.powerNameList = distributionSelection.data;
                     // This.powerNameList = res.data;
                 }else{
@@ -189,6 +226,7 @@ export default {
 }
 </script>
 <style scoped>
+
     .power_content{
     }
     .power_content h2{
@@ -207,7 +245,7 @@ export default {
         font-size:16px;
         position: relative;
     }
-    .power_content h2 span::after{
+    .power_content h2 span:after{
         content: '';
         display: block;
         width:14px;
@@ -219,6 +257,9 @@ export default {
         margin-top: -7px;
         left: -18px;
     }
+     .power_content h2 .error:after{
+         background:#E76666;
+     }
     .power_info_warp{
         width: 100%;
         height: 100%;
@@ -333,14 +374,45 @@ export default {
         top: 76px;
         left: 148px;
     }
-    .power_info_list .left_img img:nth-of-type(2){
-        margin-bottom:15px;
-    }
-    .power_info_list .left_img img:nth-of-type(3){
-        margin-bottom:7px;
-    }
+   
     .power_info_list .left_img{
         position: relative;
+        display: box;
+        display: -webkit-box;
+        display: flex; 
+    }
+    .power_info_list .left_img .img_list{
+        position: relative;
+    }
+    .power_info_list .left_img .img_list span{
+        display: block;
+        width: 56px;
+        height: 17px;
+        font-size:12px;
+        color:rgba(58,58,58,1);
+        text-align: center;
+        line-height: 17px;
+         background-color: #F6DCC9;
+        border:1px solid #E76666; 
+        position: absolute;
+        top: 126px;
+        left: 2px;
+        z-index: 2;
+    }
+    .power_info_list .left_img .img_list:nth-of-type(1) span{
+        left: 150px;
+    }
+    .power_info_list .left_img .img_list:nth-of-type(2) span{
+        left: 27px;
+    }
+    .power_info_list .left_img .img_list:nth-of-type(3) span{
+        left: 12px;
+    }
+    .power_info_list .left_img .img_list:nth-of-type(2) img{
+        margin-top:126px;
+    }
+    .power_info_list .left_img .img_list:nth-of-type(3) img{
+        margin-top:38px;
     }
     .power_info_list .left_img .temperature_list{
         display: box;
@@ -350,6 +422,7 @@ export default {
         top:0px;
         right:70px;
     }
+    
     .power_info_list .temperature_list .list{
         margin-right: 6px;
     }
@@ -468,6 +541,17 @@ export default {
     }
     .power_info_table .el-button--mini{
             padding: 4px 9px;
+    }
+    /*右下角狂*/
+    .fixed_power_list{
+        position: fixed;
+        left:100%;
+        bottom: 10px;
+        /* transform: translateX(-100%); */
+        z-index: 22;
+        transform: scale(0.4) translateX(-200%);
+        background-color: #fff;
+        cursor: pointer;
     }
  </style>
  <style>

@@ -133,9 +133,7 @@ export default {
             let This = this;
             let oTimer = null;
             This.dialogTableVisible = true;
-
             clearTimeout(oTimer)
-
             oTimer=setTimeout(function() {
                 This.getHomeLine();
             }, 200);
@@ -144,7 +142,6 @@ export default {
         getHomeLine(){
             let This = this;
             let home_chart = document.getElementById('home_chart');
-            
             console.log(this.$refs.homeChart)
             let myChart = echarts.init(home_chart)
             let option = {

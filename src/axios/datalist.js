@@ -139,94 +139,58 @@ export const branchParams ={
 /*支路信息列表*/
 export const distributionBranch ={
 	"data": {
-		"branchList": [{
-			"parentOrder": null,
-			"branchInfos": [{
-				"branchId": 1,
-				"branchOpenStatus": 0.0,
-				"branchOrder": "1",
-				"parentOrder": "",
-				"branchName": "支路1",
-				"branchType": 0
-			}, {
-				"branchId": 4,
-				"branchOpenStatus": 0.0,
-				"branchOrder": "1",
-				"parentOrder": "",
-				"branchName": "支路4",
-				"branchType": 1
-			}, {
-				"branchId": 2,
-				"branchOpenStatus": 0.0,
-				"branchOrder": "2",
-				"parentOrder": "",
-				"branchName": "支路2",
-				"branchType": 2
-			}]
-		},{
-			"parentOrder": null,
-			"branchInfos": [{
-				"branchId": 1,
-				"branchOpenStatus": 0.0,
-				"branchOrder": "1",
-				"parentOrder": "",
-				"branchName": "支路1",
-				"branchType": 0
-			}, {
-				"branchId": 4,
-				"branchOpenStatus": 0.0,
-				"branchOrder": "1",
-				"parentOrder": "",
-				"branchName": "支路4",
-				"branchType": 1
-			}, {
-				"branchId": 2,
-				"branchOpenStatus": 0.0,
-				"branchOrder": "2",
-				"parentOrder": "",
-				"branchName": "支路2",
-				"branchType": 2
-			},{
-				"branchId": 12,
-				"branchOpenStatus": 0.0,
-				"branchOrder": "2",
-				"parentOrder": "",
-				"branchName": "支路2",
-				"branchType": 2
+		"branchList": [
+            {
+                "parentOrder": null,
+                "branchInfos": [
+                    {
+                        "branchId": 1,
+                        "branchOpenStatus": 0,
+                        "branchOrder": "4122",
+                        "parentOrder": "",
+                        "branchName": "S1-2TM变压器进线",
+                        "branchType": 0
+                    },
+                    {
+                        "branchId": 4,
+                        "branchOpenStatus": 1,
+                        "branchOrder": "4123",
+                        "parentOrder": "",
+                        "branchName": "电容补偿",
+                        "branchType": 1
+                    },
+                    {
+                        "branchId": 2,
+                        "branchOpenStatus": 0,
+                        "branchOrder": "4124",
+                        "parentOrder": "",
+                        "branchName": "联络",
+                        "branchType": 2
+                    }
+                ]
             },
             {
-				"branchId": 13,
-				"branchOpenStatus": 0.0,
-				"branchOrder": "2",
-				"parentOrder": "",
-				"branchName": "支路2",
-				"branchType": 2
-			},{
-				"branchId": 14,
-				"branchOpenStatus": 0.0,
-				"branchOrder": "2",
-				"parentOrder": "",
-				"branchName": "支路2",
-				"branchType": 2
-			}]
-		}, {
-			"parentOrder": "3335",
-			"branchInfos": [{
-				"branchId": 5,
-				"branchOpenStatus": 1.0,
-				"branchOrder": "2",
-				"parentOrder": "3335",
-				"branchName": "支路5",
-				"branchType": 3
-			}, {
-				"branchId": 3,
-				"branchOpenStatus": 0.0,
-				"branchOrder": "3",
-				"parentOrder": "3335",
-				"branchName": "支路3",
-				"branchType": 3
-			}]
-		}],
+                "parentOrder": "3335",
+                "branchInfos": [
+                    {
+                        "branchId": 5,
+                        "branchOpenStatus": 0,
+                        "branchOrder": "4125",
+                        "parentOrder": "3335",
+                        "branchName": "商户电表箱",
+                        "branchType": 3
+                    },
+                    {
+                        "branchId": 3,
+                        "branchOpenStatus": 1,
+                        "branchOrder": "4126",
+                        "parentOrder": "3335",
+                        "branchName": "泛光照明",
+                        "branchType": 3
+                    }
+                ]
+            }
+        ],
 		"temperatures": [{
 			"name": "A0项温度",
 			"data": "35°C"
@@ -298,55 +262,116 @@ export const distributionSelection = {
 }
 /*表计检测*/
 export const meterMonitor ={
-	"data": [{
-		"collectorStatus": 0.0,
-		"collectorOnlineRate": 14.0,
-		"collectorId": 1,
-		"collectorCode": "234",
-		"coms": [{
-			"comId": 1,
-			"comName": "com1",
-			"branches": [{
-				"branchId": 1,
-				"minValue": 100,
-				"branchOrder": "4123",
-				"branchValue": 574.0,
-				"maxValue": 10000,
-				"branchName": "支路1",
-				"onlineRate": 42.0,
-				"status": 0.0
-			}]
-		}, {
-			"comId": 2,
-			"comName": "com2",
-			"branches": [{
-				"branchId": 2,
-				"minValue": 100,
-				"branchOrder": "4124",
-				"branchValue": 762.0,
-				"maxValue": 10000,
-				"branchName": "支路2",
-				"onlineRate": 9.0,
-				"status": 0.0
-			}]
-		}],
-		"collectorName": "采集器1"
-	}, {
-		"collectorStatus": 1.0,
-		"collectorOnlineRate": 90.0,
-		"collectorId": 2,
-		"collectorCode": "235",
-		"collectorName": "采集器2"
-	}, {
-		"collectorStatus": 0.0,
-		"collectorOnlineRate": 97.0,
-		"collectorId": 3,
-		"collectorCode": "236",
-		"collectorName": "采集器3"
-	}],
-	"code": 200,
-	"msg": "",
-	"errors": null
+    "data": [
+        {
+            "collectorStatus": 0,
+            "collectorOnlineRate": 9,
+            "collectorId": 1,
+            "collectorCode": "234",
+            "coms": [
+                {
+                    "comId": 1,
+                    "comName": "com1",
+                    "branches": [
+                        {
+                            "branchId": 1,
+                            "minValue": 100,
+                            "branchOrder": "1",
+                            "branchValue": 736,
+                            "maxValue": 10000,
+                            "branchName": "S1-2TM变压器进线",
+                            "onlineRate": 71,
+                            "status": 0
+                        },
+                        {
+                            "branchId": 2,
+                            "minValue": 100,
+                            "branchOrder": "1",
+                            "branchValue": 736,
+                            "maxValue": 10000,
+                            "branchName": "S1-2TM变压器进线",
+                            "onlineRate": 71,
+                            "status": 0
+                        },
+                        {
+                            "branchId": 3,
+                            "minValue": 100,
+                            "branchOrder": "1",
+                            "branchValue": 736,
+                            "maxValue": 10000,
+                            "branchName": "S1-2TM变压器进线",
+                            "onlineRate": 71,
+                            "status": 0
+                        }
+                    ]
+                },
+                {
+                    "comId": 2,
+                    "comName": "com2",
+                    "branches": [
+                        {
+                            "branchId": 2,
+                            "minValue": 100,
+                            "branchOrder": "3",
+                            "branchValue": 507,
+                            "maxValue": 10000,
+                            "branchName": "联络",
+                            "onlineRate": 87,
+                            "status": 1
+                        }
+                    ]
+                }, {
+                    "comId": 3,
+                    "comName": "com2",
+                    "branches": [
+                        {
+                            "branchId": 2,
+                            "minValue": 100,
+                            "branchOrder": "3",
+                            "branchValue": 507,
+                            "maxValue": 10000,
+                            "branchName": "联络",
+                            "onlineRate": 87,
+                            "status": 1
+                        }
+                    ]
+                }, {
+                    "comId": 4,
+                    "comName": "com2",
+                    "branches": [
+                        {
+                            "branchId": 2,
+                            "minValue": 100,
+                            "branchOrder": "3",
+                            "branchValue": 507,
+                            "maxValue": 10000,
+                            "branchName": "联络",
+                            "onlineRate": 87,
+                            "status": 1
+                        }
+                    ]
+                }
+            ],
+            "collectorName": "采集器1"
+        }
+        // {
+        //     "collectorStatus": 0,
+        //     "collectorOnlineRate": 98,
+        //     "collectorId": 2,
+        //     "collectorCode": "235",
+        //     "collectorName": "采集器2"
+        // },
+        // {
+        //     "collectorStatus": 0,
+        //     "collectorOnlineRate": 43,
+        //     "collectorId": 3,
+        //     "collectorCode": "236",
+        //     "collectorName": "采集器3"
+        // }
+    ],
+    "code": 200,
+    "msg": "",
+    "errors": null
 }
 /*历史数据*/
 export const hisrMonitor={
@@ -394,3 +419,96 @@ export const hisrMonitor={
     "msg": "",
     "errors": null
 }
+
+
+export const chart={
+    "data": [
+        {
+            "id": 6,
+            "paramtype": 2,
+            "timeunit": 2,
+            "date": "2018-08-22",
+            "unit": "kb",
+            "time": 22,
+            "value": 453,
+            "createid": 1,
+            "createat": "2018-08-22 17:50:49",
+            "updateid": 1,
+            "updateat": "2018-08-22 17:50:52",
+            "isdeleted": false,
+            "abscissaTime": "2018-08-22"
+        },
+        {
+            "id": 7,
+            "paramtype": 2,
+            "timeunit": 2,
+            "date": "2018-08-23",
+            "unit": "kb",
+            "time": 23,
+            "value": 433,
+            "createid": 1,
+            "createat": "2018-08-22 17:51:07",
+            "updateid": 1,
+            "updateat": "2018-08-22 17:51:09",
+            "isdeleted": false,
+            "abscissaTime": "2018-08-23"
+        },
+        {
+            "id": 8,
+            "paramtype": 2,
+            "timeunit": 2,
+            "date": "2018-08-24",
+            "unit": "kb",
+            "time": 24,
+            "value": 333,
+            "createid": 1,
+            "createat": "2018-08-22 17:51:24",
+            "updateid": 1,
+            "updateat": "2018-08-22 17:51:26",
+            "isdeleted": false,
+            "abscissaTime": "2018-08-24"
+        },
+        {
+            "id": 9,
+            "paramtype": 2,
+            "timeunit": 2,
+            "date": "2018-08-25",
+            "unit": "kb",
+            "time": 25,
+            "value": 435,
+            "createid": 1,
+            "createat": "2018-08-22 17:52:05",
+            "updateid": 1,
+            "updateat": "2018-08-22 17:52:08",
+            "isdeleted": false,
+            "abscissaTime": "2018-08-25"
+        }
+    ],
+    "code": 200,
+    "msg": "",
+    "errors": null
+}
+export const environmentParams= {
+    "data": [
+        {
+            "name": "湿度",
+            "code": 0
+        },
+        {
+            "name": "CO2浓度",
+            "code": 1
+        },
+        {
+            "name": "照度",
+            "code": 2
+        },
+        {
+            "name": "温度",
+            "code": 3
+        }
+    ],
+    "code": 200,
+    "msg": "",
+    "errors": null
+}
+
