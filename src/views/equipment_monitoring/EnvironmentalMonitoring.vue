@@ -23,24 +23,22 @@
             <div class="dialog_info_list">
                <el-form :inline="true" :model="formInline" class="home_from">
                     <el-form-item label="参数选择：">
-                        <el-select v-model="formInline.region" placeholder="亮度" size='mini'>
-                            <el-option label="区域一" value="shanghai"></el-option>
-                            <el-option label="区域二" value="beijing"></el-option>
+                        <el-select v-model="formInline.paramType" placeholder="选择类型" size='small'>
+                            <el-option v-for="(item,index) in MonitorParamTypes" :label="item.name" :value="item.code" :key="item.code"></el-option> 
                         </el-select>
                     </el-form-item>
                     <el-form-item label="时间粒度：">
-                        <el-select v-model="formInline.region" placeholder="时间" size='mini'> 
-                            <el-option label="区域一" value="shanghai"></el-option>
-                            <el-option label="区域二" value="beijing"></el-option>
+                        <el-select v-model="formInline.timeUnit" placeholder="选择时间" size='small'> 
+                            <el-option label="时" value="1"></el-option>
                         </el-select>
                     </el-form-item>
                     <el-form-item label="活动时间">
                         <el-col :span="11">
-                            <el-date-picker size='mini' type="date" placeholder="选择日期" v-model="formInline.date1" style="width: 100%;"></el-date-picker>
+                            <el-date-picker v-model="formInline.startTime" value-format="yyyy-MM-dd HH:mm:ss" type="datetime" placeholder="选择日期时间" style="width: 100%;"></el-date-picker>
                         </el-col>
                         <el-col class="line" :span="2">至</el-col>
                         <el-col :span="11">
-                            <el-date-picker  size='mini' type="date" placeholder="选择日期" v-model="formInline.date2" style="width: 100%;"></el-date-picker>
+                            <el-date-picker v-model="formInline.endTime" type="datetime" placeholder="选择日期时间" style="width: 100%;"></el-date-picker>
                         </el-col>
                     </el-form-item>
                     <el-form-item>
@@ -58,6 +56,9 @@
 
 <script>
  var echarts = require('echarts');
+ import ajax  from '../../axios/axios'
+ import {getMonitorParamTypes} from '../../axios/url'
+ import {environmentParams,chartData} from '../../axios/datalist'
 export default { 
     name: 'PowerDistributionMonitoring',
     data(){
@@ -117,45 +118,117 @@ export default {
                 label: 'label'
             },
             formInline: {
-                region: '',
-                date1: '',
-                date2: ''
+                paramType: '',
+                timeUnit:'',
+                startTime: '',
+                endTime: ''
             },
+            MonitorParamTypes:null,/*参数列表*/
+            MonitorChartData:null,
             dialogTableVisible: false
         }
     },
     mounted(){
         let This = this;
         This.getRegionTree()
+        This.getEnvironmentParams()
     },
     methods:{
+        /*获取参数列表*/
+        getEnvironmentParams(){
+            let This = this;
+             ajax.get('http://localhost:8080').then((res) => {
+                let code = 200;
+                if(code==200){
+                  This.MonitorParamTypes = environmentParams.data
+                }else{
+                     This.$message.error(res.msg);
+                }
+
+             })
+        },
         homeDialog(){
             let This = this;
             let oTimer = null;
             This.dialogTableVisible = true;
             clearTimeout(oTimer)
+            /*初始状态曲线数据*/
+            let Xdata =[];
+            let Ydata = [];
+         
+            chartData.data.forEach((item,index)=> {
+                Xdata.push(item.time);
+                Ydata.push(item.value);
+            });
             oTimer=setTimeout(function() {
-                This.getHomeLine();
+                This.getHomeLine(Xdata,Ydata);
             }, 200);
           
         },
-        getHomeLine(){
+        getHomeLine(xdata,ydata){
             let This = this;
             let home_chart = document.getElementById('home_chart');
             console.log(this.$refs.homeChart)
             let myChart = echarts.init(home_chart)
             let option = {
+                title: {
+                    text: 'CO2浓度逐时曲线',
+                    left: 'center'
+                },
                 xAxis: {
                     type: 'category',
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                    name : '时',
+                    axisLine:{
+                        lineStyle:{
+                            color:'rgba(241,241,241,1)',
+                            width:1
+                        }
+                    },
+                    nameTextStyle:{
+                        color:'rgba(58,58,58,1)',
+                        fontSize:14
+                    },
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: 'rgba(58,58,58,1)'
+                        },
+                        fontSize:14
+                    },
+                    axisTick: {
+                        alignWithLabel: true
+                    },
+                    data: xdata
                 },
                 yAxis: {
-                    type: 'value'
+                    type: 'value',
+                    name : 'kWh',
+                    axisLine:{
+                        lineStyle:{
+                            color:'rgba(241,241,241,1)',
+                            width:1,
+                        }
+                    },
+                    nameTextStyle:{
+                        color:'rgba(58,58,58,1)',
+                        fontSize:14
+                        // align:'left'
+                    },
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: 'rgba(58,58,58,1)'
+                        },
+                        fontSize:14
+                    }
                 },
                 series: [{
-                    data: [820, 932, 901, 934, 1290, 1330, 1320],
+                    data: ydata,
                     type: 'line',
-                    smooth: true
+                    smooth: true,
+                    lineStyle:{
+                        color:'rgba(236,21,255,1)'
+                    }
                 }]
             };
             myChart.setOption(option)
@@ -185,7 +258,27 @@ export default {
         },
         /*数据提交*/
         onDataSubmit(){
+            let This = this;
+             let oTimer = null;
+            console.log(This.formInline)
+             ajax.get('http://localhost:8080').then((res) => {
+                let code = 200;
+                if(code==200){
+                    let Xdata =[];
+                    let Ydata = [];
+                    clearTimeout(oTimer)
+                    chartData.data.forEach((item,index)=> {
+                        Xdata.push(item.time-1);
+                        Ydata.push(item.value-20);
+                    });
+                    This.getHomeLine(Xdata,Ydata)
+                //   This.MonitorChartData = chartData.data
+                //   console.log(chartData.data)
+                }else{
+                     This.$message.error(res.msg);
+                }
 
+             })
         }
     }
 }
@@ -279,7 +372,7 @@ export default {
     height: 40px;
     line-height: 40px;
     background: rgba(24,129,191,1);
-    border-radius: 5px 5px 0px 0px;
+    /* border-radius: 5px 5px 0px 0px; */
     padding-left: 29px;
     position: relative;
 }

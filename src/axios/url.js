@@ -14,3 +14,8 @@ export const getDistributionBranch = baseUrl+'/api/admin/monitor/getDistribution
 
 /*获取支路信息列表 ?distributionId=1*/
 export const getBranchParams = baseUrl+'/api/admin/monitor/getBranchParams'
+
+
+
+/*获取支路信息列表 ?distributionId=1*/
+export const getMonitorParamTypes = baseUrl+'/api/admin/monitor/getMonitorParamTypes'

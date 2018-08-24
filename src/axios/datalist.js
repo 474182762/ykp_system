@@ -421,7 +421,7 @@ export const hisrMonitor={
 }
 
 
-export const chart={
+export const chartData={
     "data": [
         {
             "id": 6,
