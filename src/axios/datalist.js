@@ -335,22 +335,23 @@ export const meterMonitor ={
                             "status": 1
                         }
                     ]
-                }, {
-                    "comId": 4,
-                    "comName": "com2",
-                    "branches": [
-                        {
-                            "branchId": 2,
-                            "minValue": 100,
-                            "branchOrder": "3",
-                            "branchValue": 507,
-                            "maxValue": 10000,
-                            "branchName": "联络",
-                            "onlineRate": 87,
-                            "status": 1
-                        }
-                    ]
-                }
+                },
+                //  {
+                //     "comId": 4,
+                //     "comName": "com2",
+                //     "branches": [
+                //         {
+                //             "branchId": 2,
+                //             "minValue": 100,
+                //             "branchOrder": "3",
+                //             "branchValue": 507,
+                //             "maxValue": 10000,
+                //             "branchName": "联络",
+                //             "onlineRate": 87,
+                //             "status": 1
+                //         }
+                //     ]
+                // }
             ],
             "collectorName": "采集器1"
         }

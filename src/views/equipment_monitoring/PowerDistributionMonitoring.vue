@@ -47,7 +47,7 @@
                 </dl>
                 <el-table :data="tableData" style="width: 100%" header-row-class-name = 'table_header'  stripe row-class-name ='table_row'>
                     <!-- <el-table-column  prop="powername" label="我的"></el-table-column> -->
-                    <el-table-column v-for="(item,index) in tableHeader" prop="powername" :label="item.branchName" :key = 'item.branchId'></el-table-column>
+                    <el-table-column v-for="(item) in tableHeader" prop="powername" :label="item.branchName" :key = 'item.branchId'></el-table-column>
                 </el-table>
             </div>
             <!-- 右下角框 -->

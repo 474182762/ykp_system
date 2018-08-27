@@ -18,18 +18,20 @@
             <div class="metermon_list_img">
                 <div class="top_img">
                     <img src="../../assets/meter2.png" alt="">
+                    <div class="line" v-if="meterMonitor.length==1" :class="'line'+(index+1)" :style="{left:'50%'}" ></div>
+                    <div class="line" v-else :class="'line'+(index+1)" :style="{left:((100/meterMonitor.length)*index+(100/meterMonitor.length*0.5*(index+1))+'%')}" v-for='(item , index) in meterMonitor' :key = 'index'></div>
                 </div>
                 <div class="metermon_warp">
-                     <div class="metermon_left" v-for='(item,index) in meterMonitor' :key='item.collectorId'>
+                     <div class="metermon_left" :class="'metermon_left'+index" v-for='(item,index) in meterMonitor' :key='item.collectorId'>
                         <div class="left_top">
                             <span>{{item.collectorCode}}#</span>
                             <img src="../../assets/meter1.png" alt="">   
                             <div class="line" :class="'line_'+(index1+1)" v-for="(ele,index1) in item.coms" :key='ele.comId'></div>
                         </div>
-                        <div class="left_list_warp">
+                        <div class="left_list_warp" :style="{width:item.coms.length*274+'px'}">
                              <dl :class="'list'+(index1+1)" class="left_list" v-for="(ele,index1) in item.coms" :key='ele.comId' >
                                 <dt>{{ele.comName}}<br/>电表</dt>
-                                  <dd v-for="(item2, index2) in ele.branches" :key='item2.branchId'>
+                                  <dd v-for="(item2) in ele.branches" :key='item2.branchId'>
                                     <div class="home_num home">{{item2.branchValue}}</div>
                                     <div class="home_percent home">{{item2.onlineRate}}%</div>
                                     <div class="home_info">{{item2.branchName}}</div>
@@ -247,7 +249,7 @@ export default {
                  if(code==200){
                      This.meterMonitor = meterMonitor.data;
                     // This.meterMonitor = res.data
-                    console.log(This.meterMonitor[0].coms[0].comId)
+                    console.log(This.meterMonitor.length)
                  }else{
                      This.$message.error(res.msg);
                  }
@@ -267,6 +269,7 @@ export default {
             This.timelist.forEach((ele,index)=>{
 
                 ele.active =false;
+                
             })
 
             item.active =true;
@@ -431,7 +434,6 @@ export default {
 /*关系列表图*/
 .metermon_info .metermon_list_img{
     width: 100%;
-    width: 100%;
     position: absolute;
     top:27px;
     height: 600px;
@@ -440,10 +442,22 @@ export default {
 .metermon_list_img .top_img{
     width: 248px;
     /* margin: 0 auto; */
-    position: relative;
-    left:829px;
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
 }
-.metermon_list_img .top_img:after{
+.metermon_list_img .top_img .line{
+    content:'';
+    display: block;
+    width: 2px;
+    height: 39px;
+    background: #2274A4;
+    position: absolute;
+    /* left: 97px; */
+    top: 39px;
+
+}
+/* .metermon_list_img .top_img:after{
     content:'';
     display: block;
     width: 2px;
@@ -453,8 +467,8 @@ export default {
     left: 97px;
     top: 39px;
 
-}
- .metermon_list_img .top_img:before{
+} */
+ /* .metermon_list_img .top_img:before{
     content:'';
     display: block;
     width: 2px;
@@ -463,24 +477,29 @@ export default {
     position: absolute;
     right: 89px;
     top: 39px;
-}
+} */
  .metermon_list_img .metermon_warp{
-     display: box;
+     /* display: box;
     display: -webkit-box;
-    display: flex;
-     width: 2340px; 
+    display: flex; */
+     /* width: 2340px;  */
  }
 /*左侧模块*/
 .metermon_left{
-    width: 1170px;
+    /* width: 1170px;
     position: relative;
-    top:50px;
+    top:50px; */
+}
+.metermon_left{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 120px;
 }
 .metermon_left .left_top{
-    width: 96px;
-    height: 36px;
-    position: relative;
-    left:352px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
 }
 .metermon_left .left_top span{
     position: absolute;
@@ -491,7 +510,7 @@ export default {
     font-size: 14px;
 
 }
-.metermon_left .left_top:after{
+/* .metermon_left .left_top:after{
     content:'';
     display: block;
     width: 2px;
@@ -510,7 +529,7 @@ export default {
     position: absolute;
     left: 82px;
     top: -38px;
-}
+} */
 .metermon_left  .left_top .line{
     width: 2px;
     background: #3FBC7A;
@@ -535,22 +554,25 @@ export default {
 }
 /*列表样式*/
 .metermon_left .left_list_warp{
-    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
 }
 .metermon_left .left_list{
+    width: 274px;
     font-size: 12px;
     border-left:2px solid #3FBC7A;
     padding-top: 30px;
-    position: absolute;
+    
+    /* position: absolute; */
     
 }
-.metermon_left .list1{
+/* .metermon_left .list1{
     width: 274px;
     left: 40px;
     top: 13px;
     
-}
-.metermon_left .list2{
+} */
+/* .metermon_left .list2{
     width: 274px;
     left: 320px;
     top: 21px;
@@ -564,7 +586,7 @@ export default {
     width: 469px;
     left: 900px;
     top: 13px;  
-}
+} */
 .metermon_left .left_list:after{
     content:'';
     display: block;

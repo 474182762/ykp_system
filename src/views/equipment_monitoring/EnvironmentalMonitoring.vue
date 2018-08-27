@@ -24,7 +24,7 @@
                <el-form :inline="true" :model="formInline" class="home_from">
                     <el-form-item label="参数选择：">
                         <el-select v-model="formInline.paramType" placeholder="选择类型" size='small'>
-                            <el-option v-for="(item,index) in MonitorParamTypes" :label="item.name" :value="item.code" :key="item.code"></el-option> 
+                            <el-option v-for="(item) in MonitorParamTypes" :label="item.name" :value="item.code" :key="item.code"></el-option> 
                         </el-select>
                     </el-form-item>
                     <el-form-item label="时间粒度：">
