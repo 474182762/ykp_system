@@ -18,15 +18,15 @@
             <div class="metermon_list_img">
                 <div class="top_img">
                     <img src="../../assets/meter2.png" alt="">
-                    <div class="line" v-if="meterMonitor.length==1" :class="'line'+(index+1)" :style="{left:'50%'}" ></div>
-                    <div class="line" v-else :class="'line'+(index+1)" :style="{left:((100/meterMonitor.length)*index+(100/meterMonitor.length*0.5*(index+1))+'%')}" v-for='(item , index) in meterMonitor' :key = 'index'></div>
+                    <!-- <div class="line" v-if="meterMonitor.length==1" :class="'line'+(index+1)" :style="{left:'50%'}" ></div> -->
+                    <div class="line" :class="'line'+(index+1)" :style="{left:((2*index+1)/(2*meterMonitor.length))*100+'%'}" v-for='(item , index) in meterMonitor' :key = 'index'></div>
                 </div>
                 <div class="metermon_warp">
-                     <div class="metermon_left" :class="'metermon_left'+index" v-for='(item,index) in meterMonitor' :key='item.collectorId'>
+                     <div class="metermon_left" :class="'metermon_left'+index" :style="{left:(item.coms.length*274)*index+'px'}" v-for='(item,index) in meterMonitor' :key='item.collectorId'>
                         <div class="left_top">
                             <span>{{item.collectorCode}}#</span>
                             <img src="../../assets/meter1.png" alt="">   
-                            <div class="line" :class="'line_'+(index1+1)" v-for="(ele,index1) in item.coms" :key='ele.comId'></div>
+                            <div class="line" :class="'line_'+(index1+1)" :style="{left:((2*index1+1)/(2*item.coms.length))*100+'%'}"  v-for="(ele,index1) in item.coms" :key='ele.comId'></div>
                         </div>
                         <div class="left_list_warp" :style="{width:item.coms.length*274+'px'}">
                              <dl :class="'list'+(index1+1)" class="left_list" v-for="(ele,index1) in item.coms" :key='ele.comId' >
@@ -236,7 +236,7 @@ export default {
         }
     },
     mounted(){
-       let This = this;
+        let This =this;
         // This.getMeterDetails(This.timelist[0],0)
         This.getMeterMonitor()
     },
@@ -249,7 +249,6 @@ export default {
                  if(code==200){
                      This.meterMonitor = meterMonitor.data;
                     // This.meterMonitor = res.data
-                    console.log(This.meterMonitor.length)
                  }else{
                      This.$message.error(res.msg);
                  }
@@ -447,10 +446,10 @@ export default {
     transform: translateX(-50%);
 }
 .metermon_list_img .top_img .line{
-    content:'';
-    display: block;
+    /* content:'';
+    display: block; */
     width: 2px;
-    height: 39px;
+    height: 80px;
     background: #2274A4;
     position: absolute;
     /* left: 97px; */
@@ -479,22 +478,17 @@ export default {
     top: 39px;
 } */
  .metermon_list_img .metermon_warp{
-     /* display: box;
-    display: -webkit-box;
-    display: flex; */
-     /* width: 2340px;  */
+     width: 100%;
+     position: absolute;
+    top: 118px;
+    border-top:2px solid #2274A4;
  }
 /*左侧模块*/
 .metermon_left{
-    /* width: 1170px;
-    position: relative;
-    top:50px; */
-}
-.metermon_left{
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 120px;
+    /* left: 50%;
+    transform: translateX(-50%); */
+    top:60px;
 }
 .metermon_left .left_top{
     position: absolute;
@@ -510,17 +504,17 @@ export default {
     font-size: 14px;
 
 }
-/* .metermon_left .left_top:after{
+.metermon_left .left_top:after{
     content:'';
     display: block;
     width: 2px;
-    height: 39px;
+    height: 62px;
     background: #2274A4;
     position: absolute;
     right: 12px;
-    top: -38px;
+    top: -60px;
 }
-.metermon_left .left_top:before{
+/* .metermon_left .left_top:before{
     content:'';
     display: block;
     width: 494px;
@@ -535,8 +529,9 @@ export default {
     background: #3FBC7A;
     position: absolute;
     top: 29px;
+    height: 30px;
 }
-.metermon_left  .left_top .line_1{
+/* .metermon_left  .left_top .line_1{
     height: 22px;
     right: 45px;
 }
@@ -551,17 +546,19 @@ export default {
 .metermon_left  .left_top .line_4{
     height: 22px;
     right: 15px;
-}
+} */
 /*列表样式*/
 .metermon_left .left_list_warp{
     display: -webkit-box;
     display: -webkit-flex;
+    margin-top: 58px;
 }
 .metermon_left .left_list{
     width: 274px;
     font-size: 12px;
     border-left:2px solid #3FBC7A;
     padding-top: 30px;
+    border-top:2px solid #3FBC7A;
     
     /* position: absolute; */
     
@@ -587,7 +584,7 @@ export default {
     left: 900px;
     top: 13px;  
 } */
-.metermon_left .left_list:after{
+/* .metermon_left .left_list:after{
     content:'';
     display: block;
     height: 2px;
@@ -609,7 +606,7 @@ export default {
 .metermon_left .list4:after{
     width:469px;
     left: -469px;
-}
+} */
 .metermon_left .left_list dt{
     color:#2274A4;
     font-size: 14px;

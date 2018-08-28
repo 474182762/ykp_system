@@ -51,7 +51,7 @@
                 </el-table>
             </div>
             <!-- 右下角框 -->
-            <!-- <div class="power_info_list fixed_power_list" :style="{width:lineWidth+62+'px'}">
+             <div class="power_info_list fixed_power_list" :style="{width:lineWidth+62+'px'}">
                 <div class="line" :style="{width:lineWidth-108+'px'}"></div>
                 <div class="left_img" ref="left_img">
                     <div class="img_list"><span>1111</span><img src="../../assets/power1.png" alt=""></div>
@@ -75,7 +75,7 @@
                     </li>
                     
                 </ul>
-            </div> -->
+            </div> 
         </div>
     </div>
 </template>

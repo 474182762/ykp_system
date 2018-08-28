@@ -320,12 +320,106 @@ export const meterMonitor ={
                             "status": 1
                         }
                     ]
-                }, {
+                },
+                {
                     "comId": 3,
                     "comName": "com2",
                     "branches": [
                         {
                             "branchId": 2,
+                            "minValue": 100,
+                            "branchOrder": "3",
+                            "branchValue": 507,
+                            "maxValue": 10000,
+                            "branchName": "联络",
+                            "onlineRate": 87,
+                            "status": 1
+                        }
+                    ]
+                },
+                 {
+                    "comId": 4,
+                    "comName": "com2",
+                    "branches": [
+                        {
+                            "branchId": 2,
+                            "minValue": 100,
+                            "branchOrder": "3",
+                            "branchValue": 507,
+                            "maxValue": 10000,
+                            "branchName": "联络",
+                            "onlineRate": 87,
+                            "status": 1
+                        }
+                    ]
+                }
+            ],
+            "collectorName": "采集器1"
+        },
+        {
+            "collectorStatus": 0,
+            "collectorOnlineRate": 98,
+            "collectorId": 2,
+            "collectorCode": "235",
+            "collectorName": "采集器2",
+            "coms": [
+                {
+                    "comId": 11,
+                    "comName": "com1",
+                    "branches": [
+                        {
+                            "branchId": 11,
+                            "minValue": 100,
+                            "branchOrder": "1",
+                            "branchValue": 736,
+                            "maxValue": 10000,
+                            "branchName": "S1-2TM变压器进线",
+                            "onlineRate": 71,
+                            "status": 0
+                        },
+                        {
+                            "branchId": 12,
+                            "minValue": 100,
+                            "branchOrder": "1",
+                            "branchValue": 736,
+                            "maxValue": 10000,
+                            "branchName": "S1-2TM变压器进线",
+                            "onlineRate": 71,
+                            "status": 0
+                        },
+                        {
+                            "branchId": 13,
+                            "minValue": 100,
+                            "branchOrder": "1",
+                            "branchValue": 736,
+                            "maxValue": 10000,
+                            "branchName": "S1-2TM变压器进线",
+                            "onlineRate": 71,
+                            "status": 0
+                        }
+                    ]
+                },
+                {
+                    "comId": 22,
+                    "comName": "com2",
+                    "branches": [
+                        {
+                            "branchId": 22,
+                            "minValue": 100,
+                            "branchOrder": "3",
+                            "branchValue": 507,
+                            "maxValue": 10000,
+                            "branchName": "联络",
+                            "onlineRate": 87,
+                            "status": 1
+                        }
+                    ]
+                }, {
+                    "comId": 33,
+                    "comName": "com2",
+                    "branches": [
+                        {
+                            "branchId": 32,
                             "minValue": 100,
                             "branchOrder": "3",
                             "branchValue": 507,
@@ -353,15 +447,8 @@ export const meterMonitor ={
                 //     ]
                 // }
             ],
-            "collectorName": "采集器1"
-        }
-        // {
-        //     "collectorStatus": 0,
-        //     "collectorOnlineRate": 98,
-        //     "collectorId": 2,
-        //     "collectorCode": "235",
-        //     "collectorName": "采集器2"
-        // },
+            
+        },
         // {
         //     "collectorStatus": 0,
         //     "collectorOnlineRate": 43,
