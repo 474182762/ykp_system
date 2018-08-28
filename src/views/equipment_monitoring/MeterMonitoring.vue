@@ -22,7 +22,7 @@
                     <div class="line" :class="'line'+(index+1)" :style="{left:((2*index+1)/(2*meterMonitor.length))*100+'%'}" v-for='(item , index) in meterMonitor' :key = 'index'></div>
                 </div>
                 <div class="metermon_warp">
-                     <div class="metermon_left" :class="'metermon_left'+index" :style="{left:(item.coms.length*274)*index+'px'}" v-for='(item,index) in meterMonitor' :key='item.collectorId'>
+                     <div class="metermon_left" :class="'metermon_left'+index" :style="{left:index==0?0+'px':(item.coms.length*274)*(index)+'px'}" v-for='(item,index) in meterMonitor' :key='item.collectorId'>
                         <div class="left_top">
                             <span>{{item.collectorCode}}#</span>
                             <img src="../../assets/meter1.png" alt="">   

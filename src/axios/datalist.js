@@ -189,6 +189,48 @@ export const distributionBranch ={
                         "branchType": 3
                     }
                 ]
+            },
+            {
+                "parentOrder": "3335",
+                "branchInfos": [
+                    {
+                        "branchId": 5,
+                        "branchOpenStatus": 0,
+                        "branchOrder": "4125",
+                        "parentOrder": "3335",
+                        "branchName": "商户电表箱",
+                        "branchType": 3
+                    },
+                    {
+                        "branchId": 3,
+                        "branchOpenStatus": 1,
+                        "branchOrder": "4126",
+                        "parentOrder": "3335",
+                        "branchName": "泛光照明",
+                        "branchType": 3
+                    }
+                ]
+            },
+            {
+                "parentOrder": "3335",
+                "branchInfos": [
+                    {
+                        "branchId": 5,
+                        "branchOpenStatus": 0,
+                        "branchOrder": "4125",
+                        "parentOrder": "3335",
+                        "branchName": "商户电表箱",
+                        "branchType": 3
+                    },
+                    {
+                        "branchId": 3,
+                        "branchOpenStatus": 1,
+                        "branchOrder": "4126",
+                        "parentOrder": "3335",
+                        "branchName": "泛光照明",
+                        "branchType": 3
+                    }
+                ]
             }
         ],
 		"temperatures": [{

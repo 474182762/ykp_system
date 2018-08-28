@@ -47,35 +47,42 @@
                 </dl>
                 <el-table :data="tableData" style="width: 100%" header-row-class-name = 'table_header'  stripe row-class-name ='table_row'>
                     <!-- <el-table-column  prop="powername" label="我的"></el-table-column> -->
-                    <el-table-column v-for="(item) in tableHeader" prop="powername" :label="item.branchName" :key = 'item.branchId'></el-table-column>
+                    <el-table-column v-for="(item,index) in tableHeader" :prop="'powername'+(index+1)" :label="item.branchName" :key = 'item.branchId'></el-table-column>
                 </el-table>
             </div>
-            <!-- 右下角框 -->
-             <div class="power_info_list fixed_power_list" :style="{width:lineWidth+62+'px'}">
-                <div class="line" :style="{width:lineWidth-108+'px'}"></div>
-                <div class="left_img" ref="left_img">
-                    <div class="img_list"><span>1111</span><img src="../../assets/power1.png" alt=""></div>
-                    <div class="img_list"><span>2222</span><img src="../../assets/power2.png" alt=""></div>
-                    <div class="img_list"><span>3333</span><img src="../../assets/power3.png" alt=""></div>
-                    
-                    <div class="temperature_list">
-                        <ul class="left list">
-                            <li v-for="(item,index) in distributionBranch.factors" :key = "index"><span>{{item.name}}</span>{{item.data}}</li>
-                        </ul>
-                        <ul class="right list">
-                            <li v-for="(item,index) in distributionBranch.temperatures" :key = "index"><span>{{item.name}}</span>{{item.data}}</li>
-                        </ul>
-                    </div>
-                </div>
-                <ul class="right_img" ref="rightBranch">
-                    <li v-for="(item, index) in distributionBranch.branchList" :key='index'>
-                        <div class="warp">
-                            <div class="img_list" v-for="ele in item.branchInfos" :key ='ele.branchId'><span>{{ele.branchOrder}}</span><img src="../../assets/power4.png" alt=""></div>
+           
+        </div>
+         <!-- 右下角框 -->
+         <div class="fixed_power_list">
+             <div class="power_warp">
+                <div class="power_info_list " :style="{width:lineWidth+62+'px'}">
+                    <div class="line" :style="{width:lineWidth-108+'px'}"></div>
+                    <div class="left_img" ref="left_img">
+                        <div class="img_list"><span>1111</span><img src="../../assets/power1.png" alt=""></div>
+                        <div class="img_list"><span>2222</span><img src="../../assets/power2.png" alt=""></div>
+                        <div class="img_list"><span>3333</span><img src="../../assets/power3.png" alt=""></div>
+                        
+                        <div class="temperature_list">
+                            <ul class="left list">
+                                <li v-for="(item,index) in distributionBranch.factors" :key = "index"><span>{{item.name}}</span>{{item.data}}</li>
+                            </ul>
+                            <ul class="right list">
+                                <li v-for="(item,index) in distributionBranch.temperatures" :key = "index"><span>{{item.name}}</span>{{item.data}}</li>
+                            </ul>
                         </div>
-                    </li>
-                    
-                </ul>
-            </div> 
+                    </div>
+                    <ul class="right_img" ref="rightBranch">
+                        <li v-for="(item, index) in distributionBranch.branchList" :key='index'>
+                            <div class="warp">
+                                <div class="img_list" v-for="ele in item.branchInfos" :key ='ele.branchId'><span>{{ele.branchOrder}}</span><img src="../../assets/power4.png" alt=""></div>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="case"></div>
+            <div class="hidden_btn"></div>
         </div>
     </div>
 </template>
@@ -104,16 +111,15 @@ export default {
             tableHeader:[],  
             distributionBranch:{}, /*支路信息列表*/
             tableData: [
-                    {powername: '325', name: '65',  address: '552'},
-                    {powername: '2727',name: '7272', address: '424'},
-                    // {powername: '42',name: '王小虎',address: '424'},
-                    // {powername: '42',name: '王小虎',address: '424'},
-                    // {powername: '325', name: '65',  address: '552'},
-                    // {powername: '2727',name: '7272', address: '424'},
-                    // {powername: '42',name: '王小虎',address: '424'},
-                    // {powername: '42',name: '王小虎',address: '424'},
-                    // {powername: '42',name: '王小虎',address: '424'},
-                    {powername: <el-button size="mini" round>用能趋势</el-button>, name: <el-button size="mini" round>用能趋势</el-button>,address: <el-button size="mini" round>用能趋势</el-button>}
+                    {powername1: '325', powername2: '65',  powername3: '-'},
+                    {powername1: '2727',powername2: '7272', powername3: '424'},
+                    {powername1: '-', powername2: '65',  powername3: '552'},
+                    {powername1: '-',powername2: '-', powername3: '424'},
+                    {powername1: '-', powername2: '65',  powername3: '552'},
+                    {powername1: '2727',powername2: '7272', powername3: '424'},
+                    {powername1: '-', powername2: '65',  powername3: '552'},
+                    {powername1: '2727',powername2: '7272', powername3: '424'},
+                    {powername1: <el-button size="mini" round>用能趋势</el-button>, powername2: <el-button size="mini" round>用能趋势</el-button>,powername3: <el-button size="mini" round>用能趋势</el-button>}
                 ]
         }
     },
@@ -199,7 +205,7 @@ export default {
                     distributionSelection.data.forEach((item,index)=>{
                         if(index==0){
                             item.active = true;
-                            This.distribution=item.name
+                            This.distribution=item.name;
                             This.getBranchParamsList(item.id);
                             This.getDistributionBranch(item.id);
                             This.connectStatus = item.connectStatus  
@@ -512,7 +518,6 @@ export default {
         z-index: 222;
     }
 
-
     /*支路信息*/
     .power_info_table{
         display: box;
@@ -544,14 +549,40 @@ export default {
     }
     /*右下角狂*/
     .fixed_power_list{
+        width: 400px;
+        height: 210px;;
         position: fixed;
-        left:100%;
+        right:20px;
         bottom: 10px;
-        /* transform: translateX(-100%); */
         z-index: 22;
-        transform: scale(0.4) translateX(-200%);
         background-color: #fff;
         cursor: pointer;
+    }
+    .fixed_power_list .power_warp {
+        width:100% !important;
+        height: 120px !important;
+        transform: scale(0.28,0.3);
+        position: absolute;
+        left: -100px; 
+    }
+    .fixed_power_list .case{
+        width: 320px;
+        height: 139px;
+        border:1px solid #3FBC7A;
+        position: absolute;
+        left:20px;
+        top: 28px;
+        z-index: 23;
+    }
+    .fixed_power_list .hidden_btn{
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background-color: #3FBC7A;
+         position: absolute;
+        right:10px;
+        bottom: 10px;
+        z-index: 23;
     }
  </style>
  <style>
