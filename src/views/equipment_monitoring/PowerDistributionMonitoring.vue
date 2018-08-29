@@ -34,7 +34,7 @@
                 <ul class="right_img" ref="rightBranch">
                     <li v-for="(item, index) in distributionBranch.branchList" :key='index'>
                         <div class="warp">
-                            <div class="img_list" v-for="ele in item.branchInfos" :key ='ele.branchId'><span>{{ele.branchOrder}}</span><img src="../../assets/power4.png" alt=""></div>
+                            <div class="img_list" v-for="(ele,index1) in item.branchInfos" :key ='index1'><span>{{ele.branchOrder}}</span><img src="../../assets/power4.png" alt=""></div>
                         </div>
                     </li>
                     
@@ -47,7 +47,7 @@
                 </dl>
                 <el-table :data="tableData" style="width: 100%" header-row-class-name = 'table_header'  stripe row-class-name ='table_row'>
                     <!-- <el-table-column  prop="powername" label="我的"></el-table-column> -->
-                    <el-table-column v-for="(item,index) in tableHeader" :prop="'powername'+(index+1)" :label="item.branchName" :key = 'item.branchId'></el-table-column>
+                    <el-table-column v-for="(item,index) in tableHeader" :prop="'powername'+(index+1)" :label="item.branchName" :key = 'index'></el-table-column>
                 </el-table>
             </div>
            
@@ -74,7 +74,7 @@
                     <ul class="right_img" ref="rightBranch">
                         <li v-for="(item, index) in distributionBranch.branchList" :key='index'>
                             <div class="warp">
-                                <div class="img_list" v-for="ele in item.branchInfos" :key ='ele.branchId'><span>{{ele.branchOrder}}</span><img src="../../assets/power4.png" alt=""></div>
+                                <div class="img_list" v-for="(ele,index1) in item.branchInfos" :key ='index1'><span>{{ele.branchOrder}}</span><img src="../../assets/power4.png" alt=""></div>
                             </div>
                         </li>
                         
@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="case"></div>
-            <div class="hidden_btn"></div>
+            <div class="hidden_btn" @click="bottomHidden"><img :src="bottomvalue.src" alt="" width='100%' height="100%"></div>
         </div>
     </div>
 </template>
@@ -108,7 +108,12 @@ export default {
             connectStatus:'', /*连接状态*/
             left_power_name:[],
             BranchParams:[], /*支路参数列表*/
-            tableHeader:[],  
+            tableHeader:[], 
+
+            bottomvalue:{
+                src:require('../../assets/bottom1.png'),
+                state:true
+            },
             distributionBranch:{}, /*支路信息列表*/
             tableData: [
                     {powername1: '325', powername2: '65',  powername3: '-'},
@@ -129,6 +134,17 @@ export default {
         // This.tableData[0]
     },
     methods:{
+        /*bottom收起与扩展*/
+        bottomHidden(){
+            let This = this;
+            if(This.bottomvalue.state){
+                This.bottomvalue.state =false;
+                This.bottomvalue.src=require('../../assets/bottom2.png')
+            }else{
+                 This.bottomvalue.state =true;
+                This.bottomvalue.src=require('../../assets/bottom1.png')
+            }
+        },
         /*切换支路*/
         getPowerBranch(item, index){
             let This = this;
