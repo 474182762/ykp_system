@@ -53,8 +53,8 @@
            
         </div>
          <!-- 右下角框 -->
-         <div class="fixed_power_list">
-             <div class="power_warp">
+         <div class="fixed_power_list" :class="{'powerhide':!bottomvalue.state}">
+             <div class="power_warp" ref="power_warp">
                 <div class="power_info_list " :style="{width:lineWidth+62+'px'}">
                     <div class="line" :style="{width:lineWidth-108+'px'}"></div>
                     <div class="left_img" ref="left_img">
@@ -81,7 +81,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="case"></div>
+            <div class="case" @mousedown="caseDrag($event)" ref="case"></div>
             <div class="hidden_btn" @click="bottomHidden"><img :src="bottomvalue.src" alt="" width='100%' height="100%"></div>
         </div>
     </div>
@@ -104,12 +104,12 @@ export default {
                 { name:'5#',active:false,dot:true}
             ],
             distribution:'大商业1-2#',
+            startLeft:0,
             lineWidth:'100%',
             connectStatus:'', /*连接状态*/
             left_power_name:[],
             BranchParams:[], /*支路参数列表*/
             tableHeader:[], 
-
             bottomvalue:{
                 src:require('../../assets/bottom1.png'),
                 state:true
@@ -243,6 +243,21 @@ export default {
             }).catch((error) => {
                 console.log(error);
             });
+        },
+        /*鼠标按下*/
+        caseDrag(e){
+            let This = this;
+            let startLeft =0;
+            startLeft = e.clientX - This.$refs.case.offsetLeft+102
+
+            document.onmousemove = function(e) {
+                var left=e.clientX-startLeft;
+                This.$refs.power_warp.style.left=left+'px';
+            } 
+            document.onmouseup = function(e) { //当鼠标弹起来的时候不再移动  
+                this.onmousemove = null;  
+                this.onmouseup = null; //预防鼠标弹起来后还会循环（即预防鼠标放上去的时候还会移动）  
+            }
         }
     }
 }
@@ -566,20 +581,30 @@ export default {
     /*右下角狂*/
     .fixed_power_list{
         width: 400px;
-        height: 210px;;
+        height: 210px;
         position: fixed;
         right:20px;
         bottom: 10px;
         z-index: 22;
         background-color: #fff;
         cursor: pointer;
+        /* transition: 0.4s ;   */
+    }
+    .powerhide{
+        width: 28px;
+        height: 28px;
+         background-color:transparent;
     }
     .fixed_power_list .power_warp {
         width:100% !important;
         height: 120px !important;
-        transform: scale(0.28,0.3);
+         transform: scale(0.28,0.3); 
         position: absolute;
         left: -100px; 
+    }
+    .powerhide .power_warp,
+    .powerhide .case{
+        transform: scale(0);
     }
     .fixed_power_list .case{
         width: 320px;
